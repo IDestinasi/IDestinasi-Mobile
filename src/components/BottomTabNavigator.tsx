@@ -1,6 +1,6 @@
 import React from 'react';
 import { StyleSheet, Text, View, TouchableOpacity } from 'react-native';
-import BottomTabItem from '../BottomTabItem';
+import BottomTabIcons from './BottomTabIcons';
 
 const BottomTabNavigator = ({ state, descriptors, navigation }: any) => {
   return (
@@ -37,7 +37,7 @@ const BottomTabNavigator = ({ state, descriptors, navigation }: any) => {
         };
 
         return (
-          <BottomTabItem
+          <BottomTabIcons
             key = { index }
             isFocused = { isFocused }
             label = { label }
@@ -57,9 +57,8 @@ const styles = StyleSheet.create({
     flexDirection : 'row',
     backgroundColor : '#FFFFFF',
     justifyContent : 'space-between',
-    paddingTop : 32,
-    paddingBottom : 16,
+    paddingTop : 20,
+    paddingBottom : 10,
     paddingHorizontal : 30,
-
   }
 });

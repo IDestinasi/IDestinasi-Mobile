@@ -1,14 +1,14 @@
 import React from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 
-const Search = () => {
+const SearchScreen = () => {
   return (
     <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
-      <Text>Home Screen</Text>
+      <Text>IDestinasi Search</Text>
     </View>
   )
 }
 
-export default Search;
+export default SearchScreen;
 
 const styles = StyleSheet.create({});

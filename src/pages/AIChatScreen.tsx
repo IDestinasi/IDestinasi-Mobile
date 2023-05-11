@@ -4,7 +4,7 @@ import { StyleSheet, Text, View } from 'react-native';
 const AIChat = () => {
   return (
     <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
-      <Text>Home Screen</Text>
+      <Text>IDestinasi AIChat</Text>
     </View>
   )
 }

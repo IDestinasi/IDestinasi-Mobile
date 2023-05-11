@@ -4,7 +4,7 @@ import { StyleSheet, Text, View } from 'react-native';
 const Group = () => {
   return (
     <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
-      <Text>Group Screen</Text>
+      <Text>IDestnasi Group</Text>
     </View>
   )
 }

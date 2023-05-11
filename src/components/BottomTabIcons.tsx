@@ -10,9 +10,9 @@ import {
   IconGroupActive,
   IconProfile,
   IconProfileActive   
-} from '../../assets';
+} from '../assets/_IndexAssets';
 
-const BottomTabItem = ({label, isFocused, onLongPress, onPress} : any) => {
+const BottomTabIcons = ({label, isFocused, onLongPress, onPress} : any) => {
   const Icon = () => {
     if (label === 'Home') {
       return isFocused ? <IconHomeActive /> : <IconHome />
@@ -38,24 +38,32 @@ const BottomTabItem = ({label, isFocused, onLongPress, onPress} : any) => {
         style={styles.container}
         >
         <Icon />
+        {isFocused ? <Text style={styles.textMain}>
+          {label}
+        </Text> :
         <Text style={styles.text}>
           {label}
-        </Text>
+        </Text>}
     </TouchableOpacity>
   )
 }
 
-export default BottomTabItem;
+export default BottomTabIcons;
 
 const styles = StyleSheet.create({
   container : {
-    alignContent : 'center',
+    alignItems : 'center',
     padding : 5,
     flexDirection : 'column'
   },
-  text : {
+  textMain : {
     color : '#00C0CA',
     fontSize : 12,
-    fontFamily : "Poppins"
+    fontFamily : 'Poppins'
   },
+  text : {
+    color : '#CDCDD9',
+    fontSize : 12,
+    fontFamily : 'Poppins'
+  }
 });
