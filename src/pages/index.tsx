@@ -4,4 +4,10 @@ import AIChat from './AIChat';
 import Group from './group';
 import Profile from './profile';
 
-export {Home, Search, AIChat, Group, Profile}
+export {
+    Home, 
+    Search, 
+    AIChat, 
+    Group, 
+    Profile
+}
