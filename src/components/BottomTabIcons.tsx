@@ -3,13 +3,10 @@ import { StyleSheet, Text, TouchableOpacity } from 'react-native';
 import {
   IconHome,
   IconHomeActive,
-  IconSearch,
-  IconSearchActive,
-  IconAIChat,
-  IconGroup,
-  IconGroupActive,
-  IconProfile,
-  IconProfileActive   
+  IconShoppingBag,
+  IconShoppingBagActive,
+  IconSetting,
+  IconSettingActive,
 } from '../assets/_IndexAssets';
 
 const BottomTabIcons = ({label, isFocused, onLongPress, onPress} : any) => {
@@ -17,17 +14,11 @@ const BottomTabIcons = ({label, isFocused, onLongPress, onPress} : any) => {
     if (label === 'Home') {
       return isFocused ? <IconHomeActive /> : <IconHome />
     }
-    if (label === 'Cari') {
-      return isFocused ? <IconSearchActive /> : <IconSearch />
+    if (label === 'Pesananku') {
+      return isFocused ? <IconShoppingBagActive /> : <IconShoppingBag />
     }
-    if (label === 'AIChat') {
-      return <IconAIChat />
-    }
-    if (label === 'Group') {
-      return isFocused ? <IconGroupActive /> : <IconGroup />
-    }
-    if (label === 'Profile') {
-      return isFocused ? <IconProfileActive /> : <IconProfile />
+    if (label === 'Setting') {
+      return isFocused ? <IconSettingActive /> : <IconSetting />
     }
     return null;
   }

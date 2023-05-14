@@ -1,6 +1,7 @@
 import React from 'react';
-import { StyleSheet, Text, View, TouchableOpacity } from 'react-native';
+import { StyleSheet, View } from 'react-native';
 import BottomTabIcons from './BottomTabIcons';
+import { windowWidth, windowHeight } from '../pages/_IndexScreen';
 
 const BottomTabNavigator = ({ state, descriptors, navigation }: any) => {
   return (
@@ -57,8 +58,7 @@ const styles = StyleSheet.create({
     flexDirection : 'row',
     backgroundColor : '#FFFFFF',
     justifyContent : 'space-between',
-    paddingTop : 20,
-    paddingBottom : 10,
-    paddingHorizontal : 30,
+    paddingVertical : windowHeight * 0.015,
+    paddingHorizontal : windowWidth * 0.11,
   }
 });
