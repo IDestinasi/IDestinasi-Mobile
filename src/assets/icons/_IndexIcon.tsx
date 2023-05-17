@@ -10,6 +10,8 @@ import IconSetting from './Setting.svg';
 import IconSettingActive from './SettingActive.svg';
 import IconStar from './Star.svg';
 import IconUpArrow from './UpArrow.svg';
+import IconPinLocation from './PinLocation.svg';
+import IconPinLength from './PinLength.svg';
 
 export {
     IconHome,
@@ -23,5 +25,7 @@ export {
     IconSetting,
     IconSettingActive,
     IconStar,
-    IconUpArrow
+    IconUpArrow,
+    IconPinLocation,
+    IconPinLength
 }
