@@ -1,7 +1,6 @@
 import React from 'react';
-import { StyleSheet, View } from 'react-native';
+import { StyleSheet, View, Dimensions } from 'react-native';
 import BottomTabIcons from './BottomTabIcons';
-import { windowWidth, windowHeight } from '../pages/_IndexScreen';
 
 const BottomTabNavigator = ({ state, descriptors, navigation }: any) => {
   return (
@@ -52,6 +51,9 @@ const BottomTabNavigator = ({ state, descriptors, navigation }: any) => {
 };
 
 export default BottomTabNavigator;
+
+const windowWidth = Dimensions.get('window').width;
+const windowHeight = Dimensions.get('window').height;
 
 const styles = StyleSheet.create({
   container : {
