@@ -8,6 +8,9 @@ import IconNotification from './Notification.svg';
 import IconSearch from './Search.svg';
 import IconSetting from './Setting.svg';
 import IconSettingActive from './SettingActive.svg';
+import IconStar from './Star.svg';
+import IconUpArrow from './UpArrow.svg';
+
 export {
     IconHome,
     IconHomeActive,
@@ -18,5 +21,7 @@ export {
     IconNotification,
     IconSearch,
     IconSetting,
-    IconSettingActive
+    IconSettingActive,
+    IconStar,
+    IconUpArrow
 }
