@@ -1,13 +1,12 @@
 import React from 'react';
-
 import { 
   StyleSheet, 
   View, 
   TouchableOpacity, 
   ImageBackground,
-  TextInput
+  TextInput,
+  Dimensions
 } from 'react-native';
-import { windowWidth, windowHeight } from '../pages/_IndexScreen';
 import { 
   IconNotification, 
   ImageProfile, 
@@ -44,6 +43,9 @@ const HeaderInformation = () => {
 }
 
 export default HeaderInformation;
+
+const windowWidth = Dimensions.get('window').width;
+const windowHeight = Dimensions.get('window').height;
 
 const styles = StyleSheet.create({
   banner : {
