@@ -44,7 +44,7 @@ const styles = StyleSheet.create({
   },
   catalogHeader : {
     marginHorizontal : windowWidth / 15,
-    marginTop : windowHeight / 23,
+    marginTop : windowHeight / 50,
   },
   discoveryHeader : {
     alignItems : 'center',
