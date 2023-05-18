@@ -57,7 +57,7 @@ const TourList = ({
                     <IconPinLength style={{marginRight : 5}} />
                     <Text>{tourLength[0]}km | {tourLength[1]} jam</Text>
                 </View>
-                <View style={styles.flexSub}>
+                <View style={[styles.flexSub, {justifyContent : 'flex-end'}]}>
                     <Text>{formattedPrice}</Text>
                     <Text>/tiket</Text>
                 </View>
@@ -128,7 +128,6 @@ const windowHeight = Dimensions.get('window').height;
 const styles = StyleSheet.create({
     categories : {
         flexDirection : 'row',
-        flex : 1,
         paddingHorizontal : windowWidth / 20,
         paddingVertical : windowHeight / 65,
     },
