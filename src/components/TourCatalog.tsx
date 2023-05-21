@@ -7,11 +7,11 @@ const TourPicture = ({tourImg, tourRating, tourProvince, tourPlace} : any) => {
         <ImageBackground source={tourImg} style={styles.containerImg}>
             <View style={styles.rating}>
                 <IconStar style={{marginRight : 5}} />
-                <Text>{tourRating}</Text>
+                <Text style={styles.subFont}>{tourRating}</Text>
             </View> 
             <View style={styles.destination}>
-                <Text style={styles.province}>{tourProvince}</Text>
-                <Text style={styles.place}>{tourPlace}</Text>
+                <Text style={[styles.province, styles.mainFont]}>{tourProvince}</Text>
+                <Text style={[styles.place, styles.mainFont]}>{tourPlace}</Text>
             </View>
         </ImageBackground>
     )
@@ -81,11 +81,18 @@ const styles = StyleSheet.create({
         right : windowWidth / 9
     },
     province : {
-        fontSize : 12,
+        fontSize : 14,
         color : '#FFBF00',
     },
     place : {
         fontSize : 16,
         color : 'white'
+    },
+    mainFont : {
+        fontFamily : 'Gilroy-Bold',
+    },
+    subFont : {
+        fontFamily : 'Gilroy-Bold',
+        color : 'black'
     }
 })

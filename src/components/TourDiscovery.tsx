@@ -19,7 +19,7 @@ import {
 const TourCategory = ({category} : any)  => {
     return (
         <TouchableOpacity style={styles.categoryButton}>
-            <Text style={{color : '#FF7A00'}}>{category}</Text>
+            <Text style={styles.categoryBtnTxt}>{category}</Text>
         </TouchableOpacity>
     )
 }
@@ -40,7 +40,7 @@ const TourList = ({
             <ImageBackground source={tourImg} style={styles.tourImgStyle}>
                 <View style={[styles.flexSub, styles.rating]}>
                     <IconStar style={{marginRight : 5}} />
-                    <Text>{tourRating}</Text>
+                    <Text style={styles.ratingStyle}>{tourRating}</Text>
                 </View>
             </ImageBackground>
             <View style={[styles.flexSub, styles.envStyle]}>
@@ -48,18 +48,18 @@ const TourList = ({
                 <Text style={[styles.envBox, {color : 'orange'}]}>{tourEnv[1]}</Text>
             </View>
             <View style={styles.tourBox}>
-                <Text style={{fontSize : 16}}>{tourPlace}</Text>
+                <Text style={styles.placeStyle}>{tourPlace}</Text>
                 <View style={styles.flexSub}>
                     <IconPinLocation style={{marginRight : 5}} />
-                    <Text>{tourProvince}</Text>
+                    <Text style={styles.subFont}>{tourProvince}</Text>
                 </View>
-                <View style={styles.flexSub}>
-                    <IconPinLength style={{marginRight : 5}} />
-                    <Text>{tourLength[0]}km | {tourLength[1]} jam</Text>
+                <View style={[styles.flexSub, {marginLeft : 1}]}>
+                    <IconPinLength style={{marginRight : 7}} />
+                    <Text style={styles.subFont}>{tourLength[0]}km | {tourLength[1]} jam</Text>
                 </View>
                 <View style={[styles.flexSub, {justifyContent : 'flex-end'}]}>
-                    <Text>{formattedPrice}</Text>
-                    <Text>/tiket</Text>
+                    <Text style={styles.priceStyle}>{formattedPrice}</Text>
+                    <Text style={styles.subFont}>/tiket</Text>
                 </View>
             </View>
         </View>
@@ -95,6 +95,7 @@ const TourDiscovery = () => {
                     tourRating = {4.9}
                     tourLength = {[20, 1]}
                     tourPrice = {20000}
+                    tourHigh = {true}
                 />
                 <TourList
                     tourImg = {Tour3}
@@ -134,8 +135,12 @@ const styles = StyleSheet.create({
     categoryButton : {
         backgroundColor : 'white',
         borderRadius : 6,
-        paddingHorizontal : 5,
+        padding : 8,
         marginHorizontal : windowWidth / 50,
+    },
+    categoryBtnTxt : {
+        color : '#FF7A00',
+        fontFamily : 'Gilroy-Bold'
     },
     tourContainer : {
         backgroundColor : 'white',
@@ -164,15 +169,37 @@ const styles = StyleSheet.create({
     envStyle : {
         alignItems : 'center',
         marginLeft : 8,
+        paddingBottom : 8,
+        paddingTop : 12
     },
     envBox : {
         backgroundColor : '#E5F3FF',
         marginHorizontal : 3,
         paddingHorizontal : 2,
-        fontSize : 12
+        fontSize : 12,
+        fontFamily : 'Gilroy-Bold'
     },
     tourBox : {
         marginHorizontal : 8,
         paddingTop : 5
+    },
+    placeStyle : {
+        fontSize : 16,
+        fontFamily : 'Gilroy-Bold',
+        color : 'black',
+    },
+    subFont : {
+        fontFamily : 'Gilroy-Regular',
+        fontSize : 12,
+        color : '#90A8BF'
+    },
+    priceStyle : {
+        fontFamily : 'Gilroy-ExtraBold',
+        color : 'black',
+        fontSize : 14
+    },
+    ratingStyle : {
+        fontFamily : 'Gilroy-Bold',
+        color : 'black'
     }
 });

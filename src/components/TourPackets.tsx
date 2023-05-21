@@ -16,21 +16,21 @@ const TourPacketsBox = ({packetName, packetPrice, tourTime, tourDest, tourRating
             <View style={styles.label}>
                 <View style={styles.label}>
                     <ImageMainPacket style={{marginRight : 5}} />
-                    <Text style={{fontSize : 16, width : 105}}>{packetName}</Text>
+                    <Text style={styles.mainFont}>{packetName}</Text>
                 </View>
                 <View style={styles.label}>
                     <IconStar style={{marginRight : 5}}/>
-                    <Text>{tourRating}</Text>
+                    <Text style={styles.ratingStyle}>{tourRating}</Text>
                 </View>
             </View>
             <View>
                 <View style={styles.label}>
                     <IconTimePacket style={{marginRight : 5}} />
-                    <Text>{tourTime}</Text>
+                    <Text style={styles.descFont}>{tourTime}</Text>
                 </View>
                 <View style={styles.label}>
                     <IconTimePacket style={{marginRight : 5}} />
-                    <Text>{tourDest}</Text>
+                    <Text style={styles.descFont}>{tourDest}</Text>
                 </View>
             </View>
             <View style={[styles.label, styles.bottomLabel]}>
@@ -39,7 +39,7 @@ const TourPacketsBox = ({packetName, packetPrice, tourTime, tourDest, tourRating
                     <IconMealsActive />
                     <IconStayed />
                 </View>
-                <Text>{formattedPrice}</Text>
+                <Text style={styles.priceStyle}>{formattedPrice}</Text>
             </View>
         </View>
     )
@@ -100,5 +100,25 @@ const styles = StyleSheet.create({
     bottomIconLabel : {
         justifyContent : 'space-between',
         width : windowWidth / 8
+    },
+    mainFont : {
+        fontSize : 16, 
+        width : 105,
+        fontFamily : 'Gilroy-ExtraBold',
+        color : 'black',
+    },
+    ratingStyle : {
+        fontFamily : 'Gilroy-Bold',
+        color : 'black'
+    },
+    descFont : {
+        fontFamily : 'Gilroy-Regular',
+        fontSize : 14,
+        color : '#90A8BF'
+    },
+    priceStyle : {
+        fontFamily : 'Gilroy-ExtraBold',
+        color : 'black',
+        fontSize : 14
     }
 });
