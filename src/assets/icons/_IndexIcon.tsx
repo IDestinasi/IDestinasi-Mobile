@@ -16,6 +16,9 @@ import IconTimePacket from './TimePacket.svg';
 import IconTransportActive from './TransportActive.svg';
 import IconMealsActive from './MealsActive.svg';
 import IconStayed from './Stayed.svg';
+import IconCall from './Call.svg';
+import IconLocation from './Location.svg';
+import IconDot from './Dot.svg';
 
 export {
     IconHome,
@@ -35,5 +38,8 @@ export {
     IconTimePacket,
     IconTransportActive,
     IconMealsActive,
-    IconStayed
+    IconStayed,
+    IconCall,
+    IconLocation,
+    IconDot
 }

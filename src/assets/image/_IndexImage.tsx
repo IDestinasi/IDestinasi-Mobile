@@ -7,6 +7,8 @@ const Tour1 = require('./Tour1.png');
 const Tour2 = require('./Tour2.png');
 const Tour3 = require('./Tour3.png');
 const Tour4 = require('./Tour4.png');
+const Tour5 = require('./Tour5.png');
+const ImageSnorkelling = require('./Snorkelling.png');
 
 export {
     ImageIDestinasi,
@@ -16,5 +18,7 @@ export {
     Tour2,
     Tour3,
     Tour4,
-    ImageMainPacket
+    Tour5,
+    ImageMainPacket,
+    ImageSnorkelling
 }
