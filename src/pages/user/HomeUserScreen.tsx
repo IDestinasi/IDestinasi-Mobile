@@ -1,5 +1,5 @@
 import React from 'react';
-import { StyleSheet, View, ScrollView, Text, Dimensions } from 'react-native';
+import { StyleSheet, View, ScrollView, Text, Dimensions, TouchableOpacity } from 'react-native';
 import { IconUpArrow } from '../../assets/_IndexAssets';
 import { 
   HeaderInformation, 
@@ -18,10 +18,11 @@ const TourHeader = ({tourListTitle, tourListDesc, HighDemand} : any) => {
           <Text style={styles.labelSubHeader}>{tourListDesc}</Text>
         </View>
       </View>
-      <Text style={styles.labelMore}>Lihat Semua</Text>
+      <TouchableOpacity >
+        <Text style={styles.labelMore}>Lihat Semua</Text>
+      </TouchableOpacity>
     </View>
   )
-  
 }
 
 const Home = () => {
@@ -36,7 +37,7 @@ const Home = () => {
         </View>
         <TourCatalog />
         <TourHeader
-          tourListTitle = {'Jelajai Tempat Wisata'}
+          tourListTitle = {'Jelajahi Tempat Wisata'}
           tourListDesc = {'Menandakan high-demand di area'}
           HighDemand = {true}
         />
@@ -73,16 +74,22 @@ const styles = StyleSheet.create({
     paddingTop : windowWidth / 50
   },
   labelHeader : {
-    fontSize : 16
+    fontSize : 16,
+    fontFamily : 'Gilroy-ExtraBold',
+    fontWeight : 'bold',
+    color : 'black',
   },
   labelSubHeader : {
-    fontSize : 14
+    fontSize : 12,
+    fontFamily : 'Poppins-Regular',
+    color : '#90A8BF'
   },
   labelDemand : {
     flexDirection : 'row',
     alignItems : 'center'
   },
   labelMore : {
-    color : '#00C0CA'
+    color : '#00C0CA',
+    fontFamily : 'Gilroy-Bold',
   }
 });
