@@ -4,6 +4,10 @@ import HeaderInformation from './HeaderInformation';
 import TourCatalog from "./TourCatalog";
 import TourDiscovery from "./TourDiscovery";
 import TourPackets from "./TourPackets";
+import UpComingOrder from './UpComingOrder';
+import SettledOrder from "./SettledOrder";
+import RentalOrder from './RentalOrder';
+
 
 export { 
     BottomTab,
@@ -11,5 +15,8 @@ export {
     HeaderInformation,
     TourCatalog,
     TourDiscovery,
-    TourPackets
+    TourPackets,
+    UpComingOrder,
+    SettledOrder,
+    RentalOrder
 };
