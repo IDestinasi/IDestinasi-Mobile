@@ -15,7 +15,8 @@ import {
   IconSearch,
 } from '../assets/_IndexAssets';
 
-const HeaderInformation = () => {
+const HeaderInformation = (props: any) => {
+  console.log(props);
   return (
     <View>
       <ImageBackground source={HeaderBanner} style={styles.banner}>
@@ -77,5 +78,16 @@ const styles = StyleSheet.create({
     marginLeft: 5,
     fontFamily: 'Poppins-Regular',
     width: 100,
+  },
+  jelajah: {
+    position: 'absolute',
+    bottom: 15,
+    marginHorizontal: windowWidth / 15,
+    teks: {
+      marginBottom: 20,
+      fontSize: 28,
+      fontWeight: 'bold',
+      color: 'white',
+    },
   },
 });

@@ -2,9 +2,7 @@ import * as React from 'react';
 import MainContainer from './src/MainContainer';
 
 const App = () => {
-  return (
-    <MainContainer />
-  );
-}
+  return <MainContainer />;
+};
 
 export default App;

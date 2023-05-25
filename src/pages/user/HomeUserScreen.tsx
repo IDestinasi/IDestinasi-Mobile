@@ -32,12 +32,16 @@ const TourHeader = ({tourListTitle, tourListDesc, HighDemand}: any) => {
   );
 };
 
-const Home = () => {
+const Home = ({navigation}: any) => {
+  const toListDestintion = () => {
+    navigation.navigate('ListDestination');
+  };
+
   return (
     <View style={styles.container}>
       <ScrollView>
         <View>
-          <HeaderInformation />
+          <HeaderInformation for="home-user" />
         </View>
         <View>
           <Text style={[styles.catalogHeader, styles.labelHeader]}>
