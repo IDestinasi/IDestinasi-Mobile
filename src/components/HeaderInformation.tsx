@@ -6,7 +6,6 @@ import {
   ImageBackground,
   TextInput,
   Dimensions,
-  Text,
 } from 'react-native';
 import {
   IconNotification,
@@ -21,25 +20,17 @@ const HeaderInformation = (props: any) => {
   return (
     <View>
       <ImageBackground source={HeaderBanner} style={styles.banner}>
-        {props.for == 'home-user' ? (
-          <>
-            <View style={styles.container}>
-              <ImageIDestinasiWhite />
-              <View style={styles.containerR}>
-                <TouchableOpacity>
-                  <IconNotification style={styles.spaced} />
-                </TouchableOpacity>
-                <TouchableOpacity>
-                  <ImageProfile />
-                </TouchableOpacity>
-              </View>
-            </View>
-          </>
-        ) : (
-          <View style={styles.jelajah}>
-            <Text style={styles.jelajah.teks}>Jelajah Tempat Wisata</Text>
+        <View style={styles.container}>
+          <ImageIDestinasiWhite />
+          <View style={styles.containerR}>
+            <TouchableOpacity>
+              <IconNotification style={styles.spaced} />
+            </TouchableOpacity>
+            <TouchableOpacity>
+              <ImageProfile />
+            </TouchableOpacity>
           </View>
-        )}
+        </View>
       </ImageBackground>
       <View style={styles.searchContainer}>
         <IconSearch />

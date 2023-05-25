@@ -19,6 +19,8 @@ import IconStayed from './Stayed.svg';
 import IconCall from './Call.svg';
 import IconLocation from './Location.svg';
 import IconDot from './Dot.svg';
+import IconBackArrow from './BackArrow.svg';
+import IconShow from './Show.svg';
 
 export {
     IconHome,
@@ -41,5 +43,7 @@ export {
     IconStayed,
     IconCall,
     IconLocation,
-    IconDot
+    IconDot,
+    IconBackArrow,
+    IconShow
 }

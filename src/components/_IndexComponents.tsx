@@ -7,7 +7,9 @@ import TourPackets from "./TourPackets";
 import UpComingOrder from './UpComingOrder';
 import SettledOrder from "./SettledOrder";
 import RentalOrder from './RentalOrder';
-
+import FormLogin from "./FormLogin";
+import FormRegist from "./FormRegist";
+import FormRegist2 from "./FormRegist2";
 
 export { 
     BottomTab,
@@ -18,5 +20,8 @@ export {
     TourPackets,
     UpComingOrder,
     SettledOrder,
-    RentalOrder
+    RentalOrder,
+    FormLogin,
+    FormRegist,
+    FormRegist2
 };

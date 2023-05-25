@@ -1,5 +1,5 @@
 import React from 'react';
-import {} from 'react-native';
+// import {StyleSheet} from 'react-native';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 
 import {Home, Order, Setting} from '../pages/_IndexScreen';
@@ -23,3 +23,4 @@ const BottomTab = () => {
 
 export default BottomTab;
 
+// const styles = StyleSheet.create({});
