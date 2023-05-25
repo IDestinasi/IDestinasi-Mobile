@@ -11,14 +11,14 @@ const Tour5 = require('./Tour5.png');
 const ImageSnorkelling = require('./Snorkelling.png');
 
 export {
-    ImageIDestinasi,
-    ImageIDestinasiWhite,
-    ImageProfile,
-    Tour1,
-    Tour2,
-    Tour3,
-    Tour4,
-    Tour5,
-    ImageMainPacket,
-    ImageSnorkelling
-}
+  ImageIDestinasi,
+  ImageIDestinasiWhite,
+  ImageProfile,
+  Tour1,
+  Tour2,
+  Tour3,
+  Tour4,
+  Tour5,
+  ImageMainPacket,
+  ImageSnorkelling,
+};
