@@ -10,6 +10,15 @@ import IconSetting from './Setting.svg';
 import IconSettingActive from './SettingActive.svg';
 import IconStar from './Star.svg';
 import IconUpArrow from './UpArrow.svg';
+import IconPinLocation from './PinLocation.svg';
+import IconPinLength from './PinLength.svg';
+import IconTimePacket from './TimePacket.svg';
+import IconTransportActive from './TransportActive.svg';
+import IconMealsActive from './MealsActive.svg';
+import IconStayed from './Stayed.svg';
+import IconCall from './Call.svg';
+import IconLocation from './Location.svg';
+import IconDot from './Dot.svg';
 
 export {
     IconHome,
@@ -23,5 +32,14 @@ export {
     IconSetting,
     IconSettingActive,
     IconStar,
-    IconUpArrow
+    IconUpArrow,
+    IconPinLocation,
+    IconPinLength,
+    IconTimePacket,
+    IconTransportActive,
+    IconMealsActive,
+    IconStayed,
+    IconCall,
+    IconLocation,
+    IconDot
 }

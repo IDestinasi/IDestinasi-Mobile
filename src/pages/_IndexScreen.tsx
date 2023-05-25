@@ -1,10 +1,10 @@
 import Home from './user/HomeUserScreen';
-import Order from './OrderScreen';
+import Order from './user/OrderUserScreen';
 import Profile from './ProfileScreen';
 import Setting from './SettingScreen';
 
 export {
-    Home, 
+    Home,
     Order,
     Profile,
     Setting

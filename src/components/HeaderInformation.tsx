@@ -77,6 +77,8 @@ const styles = StyleSheet.create({
     marginTop : -windowHeight / 30,
   },
   searchInput : {
-    marginLeft : 5
+    marginLeft : 5,
+    fontFamily : 'Poppins-Regular',
+    width : 100,
   }
 });
