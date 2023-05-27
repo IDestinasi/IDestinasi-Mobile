@@ -51,6 +51,7 @@ const styles = StyleSheet.create({
     backgroundColor: 'rgba(0, 192, 202, 0.9)',
   },
   container: {
+    alignItems : 'center',
     marginHorizontal: windowWidth / 15,
     marginVertical: windowHeight / 15.5,
     paddingHorizontal: 0,
@@ -58,6 +59,7 @@ const styles = StyleSheet.create({
     justifyContent: 'space-between',
   },
   containerR: {
+    alignItems : 'center',
     flexDirection: 'row',
     justifyContent: 'flex-start',
   },

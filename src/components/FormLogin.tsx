@@ -8,28 +8,27 @@ import {
   TouchableOpacity,
   Dimensions,
 } from 'react-native';
-import {CheckBox, ThemeProvider} from '@rneui/themed';
+import { CheckBox } from '@rneui/base';
+import { IconShow } from '../assets/_IndexAssets';
 import {IconShow} from '../assets/_IndexAssets';
 import axios from 'axios';
 import {API_URL} from '../env';
 import AsyncStorage from '@react-native-async-storage/async-storage';
-
 const RemindLogin = () => {
   const [checked, setChecked] = useState(false);
 
   const toggleCheckBox = () => setChecked(!checked);
-
-  return (
-    <CheckBox
-      checked={checked}
-      onPress={toggleCheckBox}
-      iconType="material-community"
-      checkedIcon="checkbox-marked"
-      uncheckedIcon="checkbox-blank-outline"
-      checkedColor="#FF7A00"
-    />
-  );
-};
+    return (
+        <CheckBox
+            checked={checked}
+            onPress={toggleCheckBox}
+            iconType={'material-community'}
+            checkedIcon={'checkbox-marked'}
+            uncheckedIcon={'checkbox-blank-outline'}
+            checkedColor={'#FF7A00'} 
+        />
+    )
+}
 
 const FormLogin = ({navigation}: any) => {
   const [email, setEmail] = useState('');

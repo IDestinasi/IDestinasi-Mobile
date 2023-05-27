@@ -9,12 +9,18 @@ import {
   BackHandler,
 } from 'react-native';
 import {IconUpArrow} from '../../assets/_IndexAssets';
+/*
 import {
   HeaderInformation,
   TourCatalog,
   TourDiscovery,
   TourPackets,
 } from '../../components/_IndexComponents';
+*/
+import HeaderInformation from '../../components/HeaderInformation';
+import TourCatalog from '../../components/TourCatalog';
+import TourDiscovery from '../../components/TourDiscovery';
+import TourPackets from '../../components/TourPackets';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import axios from 'axios';
 import {API_URL} from '../../env';

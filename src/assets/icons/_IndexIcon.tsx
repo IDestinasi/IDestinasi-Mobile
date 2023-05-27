@@ -21,6 +21,10 @@ import IconLocation from './Location.svg';
 import IconDot from './Dot.svg';
 import IconBackArrow from './BackArrow.svg';
 import IconShow from './Show.svg';
+import IconRating from './Rating.svg';
+import IconSuggest from './Suggest.svg';
+
+const IconRewrite = require('./Rewrite.png');
 
 export {
     IconHome,
@@ -45,5 +49,8 @@ export {
     IconLocation,
     IconDot,
     IconBackArrow,
-    IconShow
+    IconShow,
+    IconRating,
+    IconSuggest,
+    IconRewrite
 }

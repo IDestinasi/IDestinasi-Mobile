@@ -1,7 +1,10 @@
 import React from 'react';
 import { StyleSheet, Text, View, Dimensions, ImageBackground } from 'react-native';
 import { HeaderBanner, Tour1, Tour5, ImageSnorkelling } from '../../assets/_IndexAssets';
-import { UpComingOrder, SettledOrder, RentalOrder } from '../../components/_IndexComponents';
+//import { UpComingOrder, SettledOrder, RentalOrder } from '../../components/_IndexComponents';
+import UpComingOrder from '../../components/UpComingOrder';
+import SettledOrder from '../../components/SettledOrder';
+import RentalOrder from '../../components/RentalOrder';
 
 const OrderScreen = () => {
   return (
