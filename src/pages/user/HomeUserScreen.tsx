@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useEffect, useState} from 'react';
 import {
   StyleSheet,
   View,
@@ -6,6 +6,7 @@ import {
   Text,
   Dimensions,
   TouchableOpacity,
+  BackHandler,
 } from 'react-native';
 import {IconUpArrow} from '../../assets/_IndexAssets';
 import {
@@ -14,8 +15,18 @@ import {
   TourDiscovery,
   TourPackets,
 } from '../../components/_IndexComponents';
+import AsyncStorage from '@react-native-async-storage/async-storage';
+import axios from 'axios';
+import {API_URL} from '../../env';
+import LoadingScreen from '../../components/LoadingScreen';
+import ListDestination from './ListDestinationUserScreen';
 
-const TourHeader = ({tourListTitle, tourListDesc, HighDemand}: any) => {
+const TourHeader = ({
+  navigation,
+  tourListTitle,
+  tourListDesc,
+  HighDemand,
+}: any) => {
   return (
     <View style={styles.discoveryHeader}>
       <View>
@@ -25,7 +36,10 @@ const TourHeader = ({tourListTitle, tourListDesc, HighDemand}: any) => {
           <Text style={styles.labelSubHeader}>{tourListDesc}</Text>
         </View>
       </View>
-      <TouchableOpacity>
+      <TouchableOpacity
+        onPress={() => {
+          navigation.navigate('ListDestination');
+        }}>
         <Text style={styles.labelMore}>Lihat Semua</Text>
       </TouchableOpacity>
     </View>
@@ -36,6 +50,53 @@ const Home = ({navigation}: any) => {
   const toListDestintion = () => {
     navigation.navigate('ListDestination');
   };
+
+  const [listDestination, setListDestination] = useState([]);
+  const [isLoading, setIsLoading] = useState(false);
+  const [newDestination, setNewDestination] = useState([]);
+
+  useEffect(() => {
+    const getToken = async () => {
+      return await AsyncStorage.getItem('token');
+    };
+
+    getToken().then(token => {
+      if (token) {
+        axios
+          .get(
+            `${API_URL}/destination/new`,
+            // WITH HEADER JWT
+            {
+              headers: {
+                Authorization: `Bearer ${token}`,
+              },
+            },
+          )
+          .then(res => {
+            setNewDestination(res.data);
+          })
+          .catch(e => {
+            console.log(e);
+          });
+
+        axios
+          .get(
+            `${API_URL}/destination`,
+            // WITH HEADER JWT
+            {
+              headers: {
+                Authorization: `Bearer ${token}`,
+              },
+            },
+          )
+          .then(res => {
+            setListDestination(res.data);
+            setIsLoading(false);
+            console.log(res.data);
+          });
+      }
+    });
+  }, []);
 
   return (
     <View style={styles.container}>
@@ -48,18 +109,22 @@ const Home = ({navigation}: any) => {
             Tempat Wisata Baru
           </Text>
         </View>
-        <TourCatalog />
+        <TourCatalog navigation={navigation} newDestination={newDestination} />
         <TourHeader
           tourListTitle={'Jelajahi Tempat Wisata'}
           tourListDesc={'Menandakan high-demand di area'}
           HighDemand={true}
+          navigation={navigation}
         />
-        <TourDiscovery />
-        <TourHeader
+        <TourDiscovery
+          navigation={navigation}
+          listDestinations={listDestination}
+        />
+        {/* <TourHeader
           tourListTitle={'Paket Untukmu'}
           tourListDesc={'Temukan paket perjalanan yang menarik'}
         />
-        <TourPackets />
+        <TourPackets />  */}
       </ScrollView>
     </View>
   );
@@ -74,6 +139,7 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: '#F8F9FD',
+    marginBottom: 15,
   },
   catalogHeader: {
     marginHorizontal: windowWidth / 15,

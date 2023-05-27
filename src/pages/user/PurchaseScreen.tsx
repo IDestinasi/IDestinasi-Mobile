@@ -10,6 +10,7 @@ import {
 } from 'react-native';
 import {API_URL} from '../../env';
 import {toTitleCase} from '../../functions/ToTitleCase';
+import {RadioButton} from 'react-native-paper';
 
 import DatePicker from 'react-native-modern-datepicker';
 
@@ -19,8 +20,13 @@ const Purchase = ({route, navigation}: {route: any; navigation: any}) => {
   const currentDate = new Date().toISOString().split('T')[0];
   const [selectedDate, setSelectedDate] = useState(currentDate);
   const [showDatePicker, setShowDatePicker] = useState(false);
+  const [selectedMethod, setSelectedMethod] = useState('');
 
   const [count, setCount] = useState(0);
+
+  const handleMetodePembayaranPress = method => {
+    setSelectedMethod(method);
+  };
 
   const handleIncrement = () => {
     setCount(prevCount => prevCount + 1);
@@ -116,6 +122,35 @@ const Purchase = ({route, navigation}: {route: any; navigation: any}) => {
           </View>
         </View>
       </View>
+      <View>
+        <Text style={{fontWeight: 'bold', fontSize: 16}}>
+          Metode Pembayaran
+        </Text>
+        <View style={{flexDirection: 'row', alignItems: 'center'}}>
+          <RadioButton.Android
+            value="Permata"
+            status={selectedMethod === 'Permata' ? 'checked' : 'unchecked'}
+            onPress={() => handleMetodePembayaranPress('Permata')}
+          />
+          <Text>Permata</Text>
+        </View>
+        <View style={{flexDirection: 'row', alignItems: 'center'}}>
+          <RadioButton.Android
+            value="BRI"
+            status={selectedMethod === 'BRI' ? 'checked' : 'unchecked'}
+            onPress={() => handleMetodePembayaranPress('BRI')}
+          />
+          <Text>BRI</Text>
+        </View>
+        <View style={{flexDirection: 'row', alignItems: 'center'}}>
+          <RadioButton.Android
+            value="BCA"
+            status={selectedMethod === 'BCA' ? 'checked' : 'unchecked'}
+            onPress={() => handleMetodePembayaranPress('BCA')}
+          />
+          <Text>BCA</Text>
+        </View>
+      </View>
     </View>
   );
 };
@@ -190,6 +225,13 @@ const styles = StyleSheet.create({
   counterText: {
     marginHorizontal: 10,
     fontSize: 20,
+  },
+  pembayaran: {
+    marginBottom: 20,
+    marginTop: 35,
+    padding: 20,
+    backgroundColor: 'white',
+    flexDirection: 'row',
   },
 });
 
