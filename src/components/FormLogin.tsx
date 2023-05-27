@@ -10,7 +10,6 @@ import {
 } from 'react-native';
 import { CheckBox } from '@rneui/base';
 import { IconShow } from '../assets/_IndexAssets';
-import {IconShow} from '../assets/_IndexAssets';
 import axios from 'axios';
 import {API_URL} from '../env';
 import AsyncStorage from '@react-native-async-storage/async-storage';

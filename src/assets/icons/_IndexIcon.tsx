@@ -23,6 +23,8 @@ import IconBackArrow from './BackArrow.svg';
 import IconShow from './Show.svg';
 import IconRating from './Rating.svg';
 import IconSuggest from './Suggest.svg';
+import IconAgenLogo from './AgenLogo.svg';
+import IconCall_2 from './Call_2.svg';
 
 const IconRewrite = require('./Rewrite.png');
 
@@ -52,5 +54,7 @@ export {
     IconShow,
     IconRating,
     IconSuggest,
-    IconRewrite
+    IconRewrite,
+    IconAgenLogo,
+    IconCall_2
 }
