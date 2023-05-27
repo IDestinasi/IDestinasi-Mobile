@@ -6,43 +6,49 @@ import {
   Dimensions,
   ImageBackground,
   ScrollView,
+  TouchableOpacity,
 } from 'react-native';
 import {Tour1, Tour2, IconStar} from '../assets/_IndexAssets';
+import {API_URL} from '../env';
 
-const TourPicture = ({tourImg, tourRating, tourProvince, tourPlace}: any) => {
+const TourPicture = ({data, navigation}: any) => {
+  const toDetailDestination = () => {
+    navigation.navigate('DetailDestination', {
+      item: data,
+    });
+  };
+
   return (
-    <ImageBackground source={tourImg} style={styles.containerImg}>
-      <View style={styles.rating}>
-        <IconStar style={{marginRight: 5}} />
-        <Text style={styles.subFont}>{tourRating}</Text>
-      </View>
-      <View style={styles.destination}>
-        <Text style={[styles.province, styles.mainFont]}>{tourProvince}</Text>
-        <Text style={[styles.place, styles.mainFont]}>{tourPlace}</Text>
-      </View>
-    </ImageBackground>
+    <TouchableOpacity onPress={() => toDetailDestination()}>
+      <ImageBackground
+        source={{uri: `${API_URL}/destination/image/${data.id}/1`}}
+        style={styles.containerImg}
+        borderRadius={20}>
+        <View style={styles.rating}>
+          <IconStar style={{marginRight: 5}} />
+          <Text style={styles.subFont}>ss</Text>
+        </View>
+        <View style={styles.destination}>
+          <Text style={[styles.province, styles.mainFont]}>{data.city}</Text>
+          <Text style={[styles.place, styles.mainFont]}>{data.name}</Text>
+        </View>
+      </ImageBackground>
+    </TouchableOpacity>
   );
 };
 
-const TourCatalog = () => {
+const TourCatalog = ({navigation, newDestination}: any) => {
   return (
     <ScrollView
       horizontal
       style={styles.container}
       showsHorizontalScrollIndicator={false}>
       <View style={styles.containerRow}>
-        <TourPicture
-          tourImg={Tour1}
-          tourRating={4.9}
-          tourProvince={'Nusa Tenggara'}
-          tourPlace={'Labuan Bajo'}
-        />
-        <TourPicture
-          tourImg={Tour2}
-          tourRating={4.9}
-          tourProvince={'Papua'}
-          tourPlace={'Raja Ampat'}
-        />
+        {newDestination.map((data: any) => {
+          return (
+            <TourPicture key={data.id} data={data} navigation={navigation} />
+          );
+        })}
       </View>
     </ScrollView>
   );
@@ -65,8 +71,8 @@ const styles = StyleSheet.create({
     width: '100%',
   },
   containerImg: {
-    width: windowWidth / 1.7,
-    height: windowHeight / 4.6,
+    width: windowWidth / 1.8,
+    height: windowHeight / 4.9,
     marginRight: 12,
   },
   rating: {
@@ -81,10 +87,10 @@ const styles = StyleSheet.create({
     height: 25,
   },
   destination: {
-    justifyContent: 'center',
-    marginHorizontal: windowWidth / 7,
-    top: windowHeight / 8.5,
-    right: windowWidth / 9,
+    position: 'absolute',
+    marginHorizontal: 10,
+    bottom: 5,
+    // right: windowWidth / 9,
   },
   province: {
     fontSize: 14,

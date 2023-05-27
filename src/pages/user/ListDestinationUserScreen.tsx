@@ -14,6 +14,8 @@ import HeaderInformation from '../../components/HeaderInformation';
 import {API_URL} from '../../env';
 import axios from 'axios';
 import LoadingScreen from '../../components/LoadingScreen';
+import TourCategory from '../../components/atoms/TourCategory';
+import requestCategory from '../../functions/requestCategory';
 // import env
 
 const categoryList = [
@@ -35,16 +37,22 @@ const ButtonCategory = ({category}: any) => {
 };
 
 const ListDestination = ({navigation}: any) => {
-  const [destination, setDestination] = useState([]);
+  const [listDestination, setListDestination] = useState([]);
   const [loading, setLoading] = useState(true);
+  const [activeCategory, setActiveCategory] = useState('Semua');
 
   const [refreshing, setRefreshing] = React.useState(false);
+
+  const handleCategoryPress = async (category: string) => {
+    setActiveCategory(category);
+    setListDestination(await requestCategory(category));
+  };
 
   const onRefresh = React.useCallback(() => {
     setLoading(true);
     axios.get(`${API_URL}/destination`).then(res => {
       console.log(res.data);
-      setDestination(res.data);
+      setListDestination(res.data);
       setLoading(false);
       setRefreshing(false);
     });
@@ -53,7 +61,7 @@ const ListDestination = ({navigation}: any) => {
   useEffect(() => {
     axios.get(`${API_URL}/destination`).then(res => {
       console.log(res.data);
-      setDestination(res.data);
+      setListDestination(res.data);
       setLoading(false);
     });
   }, []);
@@ -79,12 +87,41 @@ const ListDestination = ({navigation}: any) => {
             </View>
             <View style={styles.container}>
               <ScrollView horizontal showsHorizontalScrollIndicator={false}>
-                {categoryList.map((category, index) => {
-                  return <ButtonCategory key={index} category={category} />;
-                })}
+                <View style={styles.categories}>
+                  <TourCategory
+                    category={'Semua'}
+                    onPress={() => handleCategoryPress('Semua')}
+                    isActive={activeCategory === 'Semua'}
+                  />
+                  <TourCategory
+                    category={'Hutan'}
+                    onPress={() => handleCategoryPress('Hutan')}
+                    isActive={activeCategory === 'Hutan'}
+                  />
+                  <TourCategory
+                    category={'Gunung'}
+                    onPress={() => handleCategoryPress('Gunung')}
+                    isActive={activeCategory === 'Gunung'}
+                  />
+                  <TourCategory
+                    category={'Pantai'}
+                    onPress={() => handleCategoryPress('Pantai')}
+                    isActive={activeCategory === 'Pantai'}
+                  />
+                  <TourCategory
+                    category={'Museum'}
+                    onPress={() => handleCategoryPress('Museum')}
+                    isActive={activeCategory === 'Museum'}
+                  />
+                  <TourCategory
+                    category={'Binatang'}
+                    onPress={() => handleCategoryPress('Binatang')}
+                    isActive={activeCategory === 'Binatang'}
+                  />
+                </View>
               </ScrollView>
               <View>
-                {destination.map((item: any) => {
+                {listDestination.map((item: any) => {
                   return (
                     <TouchableOpacity
                       key={item.id}
@@ -136,6 +173,10 @@ const ListDestination = ({navigation}: any) => {
 const windowWidth = Dimensions.get('window').width;
 
 const styles = StyleSheet.create({
+  categories: {
+    flexDirection: 'row',
+    paddingVertical: 5,
+  },
   button: {
     backgroundColor: 'orange',
     width: 65,
