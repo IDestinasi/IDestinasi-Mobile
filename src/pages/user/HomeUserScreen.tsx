@@ -8,12 +8,18 @@ import {
   TouchableOpacity,
 } from 'react-native';
 import {IconUpArrow} from '../../assets/_IndexAssets';
+/*
 import {
   HeaderInformation,
   TourCatalog,
   TourDiscovery,
   TourPackets,
 } from '../../components/_IndexComponents';
+*/
+import HeaderInformation from '../../components/HeaderInformation';
+import TourCatalog from '../../components/TourCatalog';
+import TourDiscovery from '../../components/TourDiscovery';
+import TourPackets from '../../components/TourPackets';
 
 const TourHeader = ({tourListTitle, tourListDesc, HighDemand}: any) => {
   return (

@@ -7,7 +7,7 @@ import {
     TouchableOpacity,
     Dimensions
 } from 'react-native';
-import { CheckBox, ThemeProvider } from '@rneui/themed';
+import { CheckBox } from '@rneui/base';
 import { IconShow } from '../assets/_IndexAssets';
 
 const RemindLogin = () => {
@@ -19,10 +19,10 @@ const RemindLogin = () => {
         <CheckBox
             checked={checked}
             onPress={toggleCheckBox}
-            iconType="material-community"
-            checkedIcon="checkbox-marked"
-            uncheckedIcon="checkbox-blank-outline"
-            checkedColor='#FF7A00' 
+            iconType={'material-community'}
+            checkedIcon={'checkbox-marked'}
+            uncheckedIcon={'checkbox-blank-outline'}
+            checkedColor={'#FF7A00'} 
         />
     )
 }
