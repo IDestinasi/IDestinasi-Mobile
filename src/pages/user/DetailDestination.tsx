@@ -50,23 +50,26 @@ const RatingAndSchedule = () => {
   );
 };
 
-const ProviderAgen = () => {
+const ProviderAgen = ({data}: any) => {
   return (
-    <View>
-      <View style={styles.hrLine} />
-        <View style={[styles.agenContainer, ]}>
-          <View style={{flexDirection: 'row', alignItems : 'center'}}>
-            <IconAgenLogo style={{marginRight : 10}} />
+    <>
+      <View>
+        <View style={styles.hrLine} />
+        <View style={[styles.agenContainer]}>
+          <View style={{flexDirection: 'row', alignItems: 'center'}}>
+            <IconAgenLogo style={{marginRight: 10}} />
             <View>
               <Text style={styles.agenName}>Berkah Group</Text>
-              <Text style={styles.labelSecond}>Jl. Telekomunikasi. Bandung</Text>
+              <Text style={styles.labelSecond}>
+                Jl. Telekomunikasi. Bandung
+              </Text>
             </View>
           </View>
           <IconCall_2 />
         </View>
       </View>
       <View style={styles.hrLine} />
-    </View>
+    </>
   );
 };
 
@@ -126,7 +129,7 @@ const DetailDestination = ({
             }>
             <View style={styles.background}>
               <ImageBackground
-                source={{uri: `${API_URL}/destination/image/${data.id}/1`}}
+                source={{uri: `${API_URL}/destination/image/${data.id}`}}
                 style={styles.bannerImage}>
                 <View style={styles.overlay}>
                   <Text style={styles.tourPlace}>{data.name}</Text>
@@ -144,9 +147,7 @@ const DetailDestination = ({
                 paddingVertical: 10,
               }}>
               <RatingAndSchedule />
-              <Text style={styles.labelHeader}>
-                KENAPA HARUS BERKUNJUNG : Surga Indonesia
-              </Text>
+              <Text style={styles.labelHeader}>{data.name}</Text>
               <Text style={styles.descriptionStyle}>{data.description}</Text>
               <Text style={styles.labelHeader}>Kategori</Text>
               <View style={{flexDirection: 'row'}}>
@@ -154,7 +155,7 @@ const DetailDestination = ({
                   {toTitleCase(data.category)}
                 </Text>
               </View>
-              <ProviderAgen />
+              <ProviderAgen data={data} />
             </View>
           </ScrollView>
           <BuyButton
@@ -172,7 +173,7 @@ const windowHeight = Dimensions.get('window').height;
 const styles = StyleSheet.create({
   destination: {
     flex: 1,
-    marginBottom : 60
+    marginBottom: 60,
   },
   background: {
     overflow: 'hidden',

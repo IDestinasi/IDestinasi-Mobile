@@ -1,38 +1,42 @@
 import React from 'react';
 import {
-  StyleSheet, 
-  Text, 
-  View, 
-  ImageBackground, 
-  SafeAreaView, 
-  Dimensions, 
+  StyleSheet,
+  Text,
+  View,
+  ImageBackground,
+  SafeAreaView,
+  Dimensions,
   Image,
-  TouchableOpacity
+  TouchableOpacity,
 } from 'react-native';
-import { HeaderBanner_2, ImageProfile, IconRewrite } from '../assets/_IndexAssets';
+import {
+  HeaderBanner_2,
+  ImageProfile,
+  IconRewrite,
+} from '../assets/_IndexAssets';
 
 const HeadInfo = () => {
   return (
     <ImageBackground source={HeaderBanner_2} style={styles.banner}>
-        <View style={styles.container}>
-          <View style={{flexDirection : 'row', alignItems : 'center'}}>
-            <ImageProfile style={{}} />
-            <View>
-              <Text>Nazwa Tazkia</Text>
-              <Text>Nazwatazkia@gmail.com</Text>
-            </View>
+      <View style={styles.container}>
+        <View style={{flexDirection: 'row', alignItems: 'center'}}>
+          <ImageProfile style={{}} />
+          <View>
+            <Text>Nazwa Tazkia</Text>
+            <Text>Nazwatazkia@gmail.com</Text>
           </View>
-          <TouchableOpacity>
-            <Image source={IconRewrite} style={styles.iconRewrite} />
-          </TouchableOpacity>
         </View>
-      </ImageBackground>
-  )
-}
+        <TouchableOpacity>
+          <Image source={IconRewrite} style={styles.iconRewrite} />
+        </TouchableOpacity>
+      </View>
+    </ImageBackground>
+  );
+};
 
 const SettingScreen = () => {
   return (
-    <SafeAreaView style={{flex : 1}}>
+    <SafeAreaView style={{flex: 1}}>
       <HeadInfo />
     </SafeAreaView>
   );
@@ -44,22 +48,22 @@ const windowWidth = Dimensions.get('window').width;
 const windowHeight = Dimensions.get('window').height;
 
 const styles = StyleSheet.create({
-  banner : {
+  banner: {
     height: windowHeight / 4.9,
-    flexDirection : 'row'
+    flexDirection: 'row',
   },
-  iconRewrite : {
-    width : 45,
-    height : 45
+  iconRewrite: {
+    width: 45,
+    height: 45,
   },
-  container : {
-    alignItems : 'center',
-    flexDirection : 'row',
-    left : windowWidth / 9,
-    top : windowHeight / 11,
-    backgroundColor : 'red',
-    height : '40%',
-    width : '70%',
-    justifyContent : 'space-between'
-  }
+  container: {
+    alignItems: 'center',
+    flexDirection: 'row',
+    left: windowWidth / 9,
+    top: windowHeight / 11,
+    backgroundColor: 'red',
+    height: '40%',
+    width: '70%',
+    justifyContent: 'space-between',
+  },
 });

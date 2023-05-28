@@ -6,6 +6,7 @@ import {
   Dimensions,
   ImageBackground,
   ScrollView,
+  RefreshControl,
 } from 'react-native';
 import {
   HeaderBanner,
@@ -21,6 +22,7 @@ import axios from 'axios';
 import {API_URL} from '../../env';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import UnpaidOrder from '../../components/UnpaidOrder';
+import LoadingScreen from '../../components/LoadingScreen';
 
 const OrderScreen = () => {
   const [myOrder, setMyOrder] = useState({
@@ -29,25 +31,44 @@ const OrderScreen = () => {
     unpaid: [],
   });
 
+  const [loading, setLoading] = useState(true);
+  const [refreshing, setRefreshing] = useState(false);
+
+  const getDataOrder = async () => {
+    const token = await AsyncStorage.getItem('token');
+
+    axios
+      .get(`${API_URL}/order/destination`, {
+        headers: {
+          Authorization: 'Bearer ' + token,
+        },
+      })
+      .then((res: any) => {
+        setLoading(false);
+        setRefreshing(false);
+        setMyOrder(res.data);
+      });
+  };
+
+  const onRefresh = () => {
+    // Ketika pengguna melakukan refresh, atur refreshing menjadi true
+    setRefreshing(true);
+
+    // Panggil fungsi untuk mendapatkan data pesanan
+    getDataOrder();
+  };
+
   useEffect(() => {
-    const getDataOrder = async () => {
-      const token = await AsyncStorage.getItem('token');
-
-      axios
-        .get(`${API_URL}/order/destination`, {
-          headers: {
-            Authorization: 'Bearer ' + token,
-          },
-        })
-        .then((res: any) => {
-          setMyOrder(res.data);
-        });
-    };
-
     getDataOrder();
   }, []);
-  return (
-    <ScrollView style={{flex: 1}}>
+  return loading ? (
+    <LoadingScreen />
+  ) : (
+    <ScrollView
+      style={{flex: 1}}
+      refreshControl={
+        <RefreshControl refreshing={refreshing} onRefresh={onRefresh} />
+      }>
       <ImageBackground source={HeaderBanner} style={styles.banner}>
         <View style={styles.bannerHeader}>
           <Text style={styles.labelPesananku}>Pesananku</Text>
