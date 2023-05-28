@@ -138,10 +138,11 @@ const TourDiscovery = ({navigation, listDestinations}: any) => {
           {listDestination &&
             listDestination.map((data: any, index: number) => {
               return (
-                <TouchableOpacity onPress={() => toDetailDestination(data)}>
+                <TouchableOpacity
+                  key={index}
+                  onPress={() => toDetailDestination(data)}>
                   <TourList
-                    key={index}
-                    tourImg={`${API_URL}/destination/image/${data.id}`}
+                    tourImg={`${API_URL}/destination/image/${data.id}/1`}
                     tourProvince={data.city}
                     tourPlace={data.name}
                     tourEnv={data.category}

@@ -13,6 +13,8 @@ import {API_URL} from '../../env';
 import {toTitleCase} from '../../functions/ToTitleCase';
 import {RadioButton} from 'react-native-paper';
 import DatePicker from 'react-native-modern-datepicker';
+import axios from 'axios';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 import { 
   IconBackArrow_2, 
   IconCalendar, 
@@ -166,10 +168,10 @@ const Purchase = ({route, navigation}: {route: any; navigation: any}) => {
   const [selectedDate, setSelectedDate] = useState(currentDate);
   const [showDatePicker, setShowDatePicker] = useState(false);
   const [selectedMethod, setSelectedMethod] = useState('');
-
   const [count, setCount] = useState(0);
+  const [totalPrice, setTotalPrice] = useState(data.price);
 
-  const handleMetodePembayaranPress = (method: any) => {
+  const handleMetodePembayaranPress = (method: string) => {
     setSelectedMethod(method);
   };
 
@@ -181,6 +183,29 @@ const Purchase = ({route, navigation}: {route: any; navigation: any}) => {
     if (count > 0) {
       setCount(prevCount => prevCount - 1);
     }
+  };
+
+  const handlePurchase = async () => {
+    const token = await AsyncStorage.getItem('token');
+
+    const createOrder = {
+      idDestinasi: data.id,
+      qty: count,
+      visitingDate: selectedDate,
+      payment: selectedMethod,
+    };
+
+    axios
+      .post(`${API_URL}/order`, createOrder, {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      })
+      .then(res => {
+        navigation.navigate('OrderSuccess', {
+          data: res.data,
+        });
+      });
   };
 
   return (

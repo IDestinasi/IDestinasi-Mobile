@@ -81,24 +81,17 @@ const Home = ({navigation}: any) => {
           .then(res => {
             setNewDestination(res.data);
           })
-          .catch(e => {
-            console.log(e);
-          });
+          .catch(() => {});
 
         axios
-          .get(
-            `${API_URL}/destination`,
-            // WITH HEADER JWT
-            {
-              headers: {
-                Authorization: `Bearer ${token}`,
-              },
+          .get(`${API_URL}/destination`, {
+            headers: {
+              Authorization: `Bearer ${token}`,
             },
-          )
+          })
           .then(res => {
             setListDestination(res.data);
             setIsLoading(false);
-            console.log(res.data);
           });
       }
     });

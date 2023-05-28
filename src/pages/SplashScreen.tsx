@@ -1,4 +1,3 @@
-/* eslint-disable react/no-unstable-nested-components */
 import React, {useEffect, useState} from 'react';
 import {
   StyleSheet,
@@ -9,15 +8,12 @@ import {
   SafeAreaView,
   Dimensions,
 } from 'react-native';
-import {createNativeStackNavigator} from '@react-navigation/native-stack';
 import {LandingPage_1, LandingPage_2} from '../assets/_IndexAssets';
 
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import LoadingScreen from '../components/LoadingScreen';
 import axios from 'axios';
 import {API_URL} from '../env';
-
-const Stack = createNativeStackNavigator();
 
 const SplashScreen = ({navigation}: any) => {
   const [isNewUser, setIsNewUser] = useState(false);
@@ -38,9 +34,21 @@ const SplashScreen = ({navigation}: any) => {
       const token = await AsyncStorage.getItem('token');
       if (token !== null) {
         // check auth
-        navigation.navigate('TabScreen');
+        axios
+          .get(`${API_URL}/auth/check`, {
+            headers: {
+              Authorization: `Bearer ${token}`,
+            },
+          })
+          .then(() => {
+            navigation.replace('TabScreen');
+          })
+          .catch(() => {
+            navigation.navigate('PreLogin');
+          });
       } else {
-        navigation.navigate('PreLogin');
+        setIsNewUser(true);
+        setLoading(false);
       }
     };
     getData();
@@ -59,14 +67,14 @@ const SplashScreen = ({navigation}: any) => {
     }
   };
 
-  const ProgressDotBar = ({progress, totalDots}: any) => {
-    const dots = [];
-    for (let i = 0; i < totalDots; i++) {
-      const dotStyle = i <= progress ? styles.filledDot : styles.emptyDot;
-      dots.push(<View key={i} style={[styles.dot, dotStyle]} />);
-    }
-    return <View style={styles.containerDot}>{dots}</View>;
-  };
+  // const ProgressDotBar = ({progress, totalDots}: any) => {
+  //   const dots = [];
+  //   for (let i = 0; i < totalDots; i++) {
+  //     const dotStyle = i <= progress ? styles.filledDot : styles.emptyDot;
+  //     dots.push(<View key={i} style={[styles.dot, dotStyle]} />);
+  //   }
+  //   return <View style={styles.containerDot}>{dots}</View>;
+  // };
 
   return loading ? (
     <LoadingScreen text={'splash'} />

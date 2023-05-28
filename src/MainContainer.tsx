@@ -15,6 +15,7 @@ import RegistSuccessScreen from './pages/RegistSuccessScreen';
 import ListDestination from './pages/user/ListDestinationUserScreen';
 import DetailDestination from './pages/user/DetailDestination';
 import Purchase from './pages/user/PurchaseScreen';
+import OrderSuccessScreen from './pages/OrderSuccessScreen';
 
 const Stack = createNativeStackNavigator();
 
@@ -75,6 +76,11 @@ const MainContainer = () => {
         <Stack.Screen
           name="Purchase"
           component={Purchase}
+          options={{headerShown: false}}
+        />
+        <Stack.Screen
+          name="OrderSuccess"
+          component={OrderSuccessScreen}
           options={{headerShown: false}}
         />
       </Stack.Navigator>

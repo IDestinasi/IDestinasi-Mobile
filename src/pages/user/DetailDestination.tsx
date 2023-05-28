@@ -32,8 +32,8 @@ const DetailTab = () => {
         <Text style={styles.menuButtonText}>Review</Text>
       </TouchableOpacity>
     </View>
-  )
-}
+  );
+};
 
 const RatingAndSchedule = () => {
   return (
@@ -44,8 +44,8 @@ const RatingAndSchedule = () => {
       <Icon name="star" size={20} color="#FFD700" />
       <Icon name="star" size={20} color="#FFD700" />
     </View>
-  )
-}
+  );
+};
 
 const ProviderAgen = () => {
   return (
@@ -53,7 +53,7 @@ const ProviderAgen = () => {
       <View style={styles.hrLine} />
         <View style={[styles.agenContainer, ]}>
           <View style={{flexDirection: 'row', alignItems : 'center'}}>
-            <IconAgenLogo style={{marginRight : 10}} />
+          <IconAgenLogo style={{marginRight : 10}} />
             <View>
               <Text style={styles.nameStyle}>Berkah Group</Text>
               <Text style={styles.labelSecond}>Jl. Telekomunikasi. Bandung</Text>
@@ -225,8 +225,8 @@ const BuyButton = ({data, changeDetailDestination} : any) => {
         <Text style={styles.buyButtonText}>Beli Sekarang</Text>
       </TouchableOpacity>
     </View>
-  )
-}
+  );
+};
 
 const DetailDestination = ({
   route,
@@ -272,7 +272,7 @@ const DetailDestination = ({
                 style={styles.bannerImage}>
                 <View style={styles.overlay}>
                   <Text style={styles.tourPlace}>{data.name}</Text>
-                  <View style={{flexDirection : 'row'}}>
+                  <View style={{flexDirection: 'row'}}>
                     <IconLocation />
                     <Text style={styles.tourCity}>{data.city}</Text>
                   </View>
@@ -326,7 +326,7 @@ const styles = StyleSheet.create({
   tourCity: {
     color: 'white',
     fontFamily: 'Gilroy-Regular',
-    fontSize : 16
+    fontSize: 16,
   },
   menuContainer: {
     flexDirection: 'row',
@@ -353,16 +353,16 @@ const styles = StyleSheet.create({
     color: 'black',
     fontFamily: 'Gilroy-Bold',
     fontSize: 18,
-    marginBottom: 12
+    marginBottom: 12,
   },
-  descriptionStyle : {
+  descriptionStyle: {
     color: '#90A8BF',
     fontFamily: 'Poppins-Regular',
     fontSize: 14,
-    marginBottom: 20
+    marginBottom: 20,
   },
-  categoryContainer : {
-    color : 'purple',
+  categoryContainer: {
+    color: 'purple',
     backgroundColor: '#E5F3FF',
     marginHorizontal: 3,
     paddingHorizontal: 2,
@@ -372,13 +372,13 @@ const styles = StyleSheet.create({
   hrLine: {
     backgroundColor: '#C3D9E9',
     height: 2,
-    marginVertical : 20
+    marginVertical: 20,
   },
   agenContainer: {
     alignItems: 'center',
     flexDirection: 'row',
     width: '97%',
-    justifyContent: 'space-between'
+    justifyContent: 'space-between',
   },
   nameStyle: {
     color: 'black',
@@ -398,18 +398,18 @@ const styles = StyleSheet.create({
     marginBottom: 0,
     width: '100%',
     zIndex: 1,
-
+    position: 'absolute'
   },
   labelPrice: {
     alignItems: 'center',
     flexDirection: 'row',
     justifyContent: 'space-between',
-    marginBottom: 20
+    marginBottom: 20,
   },
   buyPrice: {
     color: '#00C0CA',
     fontFamily: 'Gilroy-Bold',
-    fontSize: 20
+    fontSize: 20,
   },
   buyButton: {
     alignItems: 'center',
@@ -417,7 +417,7 @@ const styles = StyleSheet.create({
     borderRadius: 10,
     height: 50,
     width: '100%',
-    justifyContent : 'center',
+    justifyContent: 'center',
   },
   buyButtonText: {
     color: 'white',
@@ -466,7 +466,7 @@ const styles = StyleSheet.create({
     justifyContent: 'space-between',
     width: '70%',
     marginVertical: 16,
-  }
+  },
 });
 
 export default DetailDestination;

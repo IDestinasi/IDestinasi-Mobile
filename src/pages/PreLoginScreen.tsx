@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import {
   StyleSheet,
   Text,
@@ -7,10 +7,25 @@ import {
   ImageBackground,
   Dimensions,
   TouchableOpacity,
+  BackHandler,
 } from 'react-native';
 import {LandingPage_3} from '../assets/_IndexAssets';
 
 const PreLoginScreen = ({navigation}: any) => {
+  useEffect(() => {
+    const backAction = () => {
+      BackHandler.exitApp();
+      return true;
+    };
+
+    const backHandler = BackHandler.addEventListener(
+      'hardwareBackPress',
+      backAction,
+    );
+
+    return () => backHandler.remove();
+  }, []);
+
   return (
     <SafeAreaView style={{flex: 1}}>
       <ImageBackground source={LandingPage_3} style={{flex: 1}}>
