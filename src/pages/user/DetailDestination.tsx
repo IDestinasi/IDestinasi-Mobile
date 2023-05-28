@@ -54,15 +54,12 @@ const ProviderAgen = () => {
   return (
     <View>
       <View style={styles.hrLine} />
-      <View>
-        <View style={styles.agenContainer}>
-          <View style={{flexDirection: 'row', alignItems: 'center'}}>
-            <IconAgenLogo style={{marginRight: 10}} />
+        <View style={[styles.agenContainer, ]}>
+          <View style={{flexDirection: 'row', alignItems : 'center'}}>
+            <IconAgenLogo style={{marginRight : 10}} />
             <View>
               <Text style={styles.agenName}>Berkah Group</Text>
-              <Text style={styles.labelSecond}>
-                Jl. Telekomunikasi. Bandung
-              </Text>
+              <Text style={styles.labelSecond}>Jl. Telekomunikasi. Bandung</Text>
             </View>
           </View>
           <IconCall_2 />
@@ -175,6 +172,7 @@ const windowHeight = Dimensions.get('window').height;
 const styles = StyleSheet.create({
   destination: {
     flex: 1,
+    marginBottom : 60
   },
   background: {
     overflow: 'hidden',

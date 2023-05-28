@@ -15,6 +15,9 @@ const LandingPage_3 = require('./LandingPage_3.png');
 const ImageRecord = require('./Record.png');
 const ImageRegistSuccess = require('./RegistSuccess.png');
 const Traveling = require('./Traveling.png');
+const ImagePermataLogo = require('./PermataLogo.png');
+const ImageBRILogo = require('./BRILogo.png');
+const ImageBCALogo = require('./BCALogo.png');
 
 export {
   ImageIDestinasi,
@@ -33,4 +36,7 @@ export {
   ImageRecord,
   ImageRegistSuccess,
   Traveling,
+  ImagePermataLogo,
+  ImageBRILogo,
+  ImageBCALogo
 };
