@@ -27,6 +27,8 @@ import IconAgenLogo from './AgenLogo.svg';
 import IconCall_2 from './Call_2.svg';
 
 const IconRewrite = require('./Rewrite.png');
+const IconBackArrow_2 = require('./BackArrow_2.png');
+const IconCalendar = require('./Calendar.png');
 
 export {
     IconHome,
@@ -56,5 +58,7 @@ export {
     IconSuggest,
     IconRewrite,
     IconAgenLogo,
-    IconCall_2
+    IconCall_2,
+    IconBackArrow_2,
+    IconCalendar
 }
