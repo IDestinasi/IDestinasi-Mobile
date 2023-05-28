@@ -14,6 +14,7 @@ const LandingPage_2 = require('./LandingPage_2.png');
 const LandingPage_3 = require('./LandingPage_3.png');
 const ImageRecord = require('./Record.png');
 const ImageRegistSuccess = require('./RegistSuccess.png');
+const Traveling = require('./Traveling.png');
 
 export {
   ImageIDestinasi,
@@ -30,5 +31,6 @@ export {
   LandingPage_2,
   LandingPage_3,
   ImageRecord,
-  ImageRegistSuccess
+  ImageRegistSuccess,
+  Traveling,
 };

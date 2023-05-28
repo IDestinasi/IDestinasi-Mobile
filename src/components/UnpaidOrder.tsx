@@ -13,9 +13,8 @@ import {IconCall, IconLocation} from '../assets/_IndexAssets';
 import changeFormatDate from '../functions/changeFormatDate';
 import Icon from 'react-native-vector-icons/FontAwesome5';
 import {API_URL} from '../env';
-import QRCode from 'react-native-qrcode-svg';
 
-const UpComingOrderDesc = ({item}: any) => {
+const UnpaidOrderDesc = ({item}: any) => {
   const [showTiket, setShowTiket] = useState(false);
 
   const handleTiketPress = () => {
@@ -57,8 +56,8 @@ const UpComingOrderDesc = ({item}: any) => {
             onPress={() => handleTiketPress()}>
             <Text style={styles.txtStyle}>
               {' '}
-              <Icon name="qrcode" color="white" />
-              <Text> E-Tiket</Text>
+              <Icon name="money-bill" color="white" />
+              <Text> Bayar</Text>
             </Text>
           </TouchableOpacity>
           {/* <TouchableOpacity
@@ -77,21 +76,21 @@ const UpComingOrderDesc = ({item}: any) => {
           <View style={styles.modalOverlay} />
         </TouchableWithoutFeedback>
         <View style={styles.modalContainer}>
-          <View style={styles.qrCodeContainer}>
-            {/* Tampilkan kode QR */}
-            <QRCode value={`${API_URL}/order/scan/${item.id}`} size={200} />
-          </View>
+          <Text>Bayar dan nikmati liburan mu</Text>
+          <Text>Bank: {item.payment} </Text>
+          <Text>VA Number: {item.va_number}</Text>
         </View>
       </Modal>
     </View>
   );
 };
 
-const UpComingOrder = ({data}: any) => {
+const UnpaidOrder = ({data}: any) => {
   return (
     <View style={styles.upComing}>
-      <Text
-        style={styles.upComingHeader}>{`Akan Datang (${data.length})`}</Text>
+      <Text style={styles.upComingHeader}>
+        {`Belum Dibayar (${data.length})`}
+      </Text>
       {/* <UpComingOrderDesc
         tourImg={tourImg}
         tourPlace={tourPlace}
@@ -101,7 +100,7 @@ const UpComingOrder = ({data}: any) => {
       {data.map((item: any) => {
         return (
           <View style={{margin: 10}}>
-            <UpComingOrderDesc item={item} />
+            <UnpaidOrderDesc item={item} />
           </View>
         );
       })}
@@ -109,7 +108,7 @@ const UpComingOrder = ({data}: any) => {
   );
 };
 
-export default UpComingOrder;
+export default UnpaidOrder;
 
 const windowWidth = Dimensions.get('window').width;
 const windowHeight = Dimensions.get('window').height;

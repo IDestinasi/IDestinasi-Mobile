@@ -16,7 +16,11 @@ import LoadingScreen from '../../components/LoadingScreen';
 import Icon from 'react-native-vector-icons/FontAwesome';
 import {toTitleCase} from '../../functions/ToTitleCase';
 import formatRupiah from '../../functions/formatRupiah';
-import { IconAgenLogo, IconCall_2, IconLocation } from '../../assets/_IndexAssets';
+import {
+  IconAgenLogo,
+  IconCall_2,
+  IconLocation,
+} from '../../assets/_IndexAssets';
 
 const DetailTab = () => {
   return (
@@ -31,8 +35,8 @@ const DetailTab = () => {
         <Text style={styles.menuButtonText}>Review</Text>
       </TouchableOpacity>
     </View>
-  )
-}
+  );
+};
 
 const RatingAndSchedule = () => {
   return (
@@ -43,31 +47,33 @@ const RatingAndSchedule = () => {
       <Icon name="star" size={20} color="#FFD700" />
       <Icon name="star" size={20} color="#FFD700" />
     </View>
-  )
-}
+  );
+};
 
 const ProviderAgen = () => {
   return (
     <View>
       <View style={styles.hrLine} />
-        <View>
-          <View style={styles.agenContainer}>
-            <View style={{flexDirection: 'row', alignItems : 'center'}}>
-              <IconAgenLogo style={{marginRight : 10}} />
-              <View>
-                <Text style={styles.agenName}>Berkah Group</Text>
-                <Text style={styles.labelSecond}>Jl. Telekomunikasi. Bandung</Text>
-              </View>
+      <View>
+        <View style={styles.agenContainer}>
+          <View style={{flexDirection: 'row', alignItems: 'center'}}>
+            <IconAgenLogo style={{marginRight: 10}} />
+            <View>
+              <Text style={styles.agenName}>Berkah Group</Text>
+              <Text style={styles.labelSecond}>
+                Jl. Telekomunikasi. Bandung
+              </Text>
             </View>
-            <IconCall_2 />
           </View>
+          <IconCall_2 />
         </View>
+      </View>
       <View style={styles.hrLine} />
     </View>
-  )
-}
+  );
+};
 
-const BuyButton = ({data, changeDetailDestination} : any) => {
+const BuyButton = ({data, changeDetailDestination}: any) => {
   return (
     <View style={styles.buySection}>
       <View style={styles.labelPrice}>
@@ -80,8 +86,8 @@ const BuyButton = ({data, changeDetailDestination} : any) => {
         <Text style={styles.buyButtonText}>Beli Sekarang</Text>
       </TouchableOpacity>
     </View>
-  )
-}
+  );
+};
 
 const DetailDestination = ({
   route,
@@ -127,7 +133,7 @@ const DetailDestination = ({
                 style={styles.bannerImage}>
                 <View style={styles.overlay}>
                   <Text style={styles.tourPlace}>{data.name}</Text>
-                  <View style={{flexDirection : 'row'}}>
+                  <View style={{flexDirection: 'row'}}>
                     <IconLocation />
                     <Text style={styles.tourCity}>{data.city}</Text>
                   </View>
@@ -141,18 +147,24 @@ const DetailDestination = ({
                 paddingVertical: 10,
               }}>
               <RatingAndSchedule />
-              <Text style={styles.labelHeader}>KENAPA HARUS BERKUNJUNG : Surga Indonesia</Text>
+              <Text style={styles.labelHeader}>
+                KENAPA HARUS BERKUNJUNG : Surga Indonesia
+              </Text>
               <Text style={styles.descriptionStyle}>{data.description}</Text>
               <Text style={styles.labelHeader}>Kategori</Text>
               <View style={{flexDirection: 'row'}}>
-                <Text style={styles.categoryContainer}>{toTitleCase(data.category)}</Text>
+                <Text style={styles.categoryContainer}>
+                  {toTitleCase(data.category)}
+                </Text>
               </View>
               <ProviderAgen />
             </View>
           </ScrollView>
-          <BuyButton data={data} changeDetailDestination={changeDetailDestination} />
+          <BuyButton
+            data={data}
+            changeDetailDestination={changeDetailDestination}
+          />
         </View>
-        
       )}
     </>
   );
@@ -162,7 +174,7 @@ const windowHeight = Dimensions.get('window').height;
 
 const styles = StyleSheet.create({
   destination: {
-    flex: 1
+    flex: 1,
   },
   background: {
     overflow: 'hidden',
@@ -186,7 +198,7 @@ const styles = StyleSheet.create({
   tourCity: {
     color: 'white',
     fontFamily: 'Gilroy-Regular',
-    fontSize : 16
+    fontSize: 16,
   },
   menuContainer: {
     flexDirection: 'row',
@@ -212,16 +224,16 @@ const styles = StyleSheet.create({
     color: 'black',
     fontFamily: 'Gilroy-Bold',
     fontSize: 18,
-    marginBottom: 12
+    marginBottom: 12,
   },
-  descriptionStyle : {
+  descriptionStyle: {
     color: '#90A8BF',
     fontFamily: 'Poppins-Regular',
     fontSize: 14,
-    marginBottom: 20
+    marginBottom: 20,
   },
-  categoryContainer : {
-    color : 'purple',
+  categoryContainer: {
+    color: 'purple',
     backgroundColor: '#E5F3FF',
     marginHorizontal: 3,
     paddingHorizontal: 2,
@@ -231,13 +243,13 @@ const styles = StyleSheet.create({
   hrLine: {
     backgroundColor: '#C3D9E9',
     height: 2,
-    marginVertical : 20
+    marginVertical: 20,
   },
   agenContainer: {
     alignItems: 'center',
     flexDirection: 'row',
     width: '97%',
-    justifyContent: 'space-between'
+    justifyContent: 'space-between',
   },
   agenName: {
     color: 'black',
@@ -257,18 +269,18 @@ const styles = StyleSheet.create({
     marginBottom: 0,
     width: '100%',
     zIndex: 1,
-    position: 'absolute'
+    position: 'absolute',
   },
   labelPrice: {
     alignItems: 'center',
     flexDirection: 'row',
     justifyContent: 'space-between',
-    marginBottom: 20
+    marginBottom: 20,
   },
   buyPrice: {
     color: '#00C0CA',
     fontFamily: 'Gilroy-Bold',
-    fontSize: 20
+    fontSize: 20,
   },
   buyButton: {
     alignItems: 'center',
@@ -276,13 +288,13 @@ const styles = StyleSheet.create({
     borderRadius: 10,
     height: 50,
     width: '100%',
-    justifyContent : 'center',
+    justifyContent: 'center',
   },
   buyButtonText: {
     color: 'white',
     fontFamily: 'Gilroy-Bold',
-    fontSize: 16
-  }
+    fontSize: 16,
+  },
 });
 
 export default DetailDestination;
