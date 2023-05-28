@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState} from 'react';
 import {
   StyleSheet,
   View,
@@ -101,3 +101,4 @@ const styles = StyleSheet.create({
     fontFamily: 'Gilroy-SemiBold',
   },
 });
+
