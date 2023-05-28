@@ -30,7 +30,7 @@ const UpComingOrderDesc = ({item}: any) => {
     <View style={styles.upComingOdrBox}>
       <Image
         source={{
-          uri: `${API_URL}/destination/image/${item.destination.id}/1`,
+          uri: `${API_URL}/destination/image/${item.destination.id}`,
         }}
         style={styles.upComingImg}
       />

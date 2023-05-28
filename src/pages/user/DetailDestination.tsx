@@ -47,7 +47,7 @@ const RatingAndSchedule = () => {
   );
 };
 
-const ProviderAgen = () => {
+const ProviderAgen = ({data}: any) => {
   return (
     <View>
       <View style={styles.hrLine} />
@@ -268,7 +268,7 @@ const DetailDestination = ({
             }>
             <View style={styles.background}>
               <ImageBackground
-                source={{uri: `${API_URL}/destination/image/${data.id}/1`}}
+                source={{uri: `${API_URL}/destination/image/${data.id}`}}
                 style={styles.bannerImage}>
                 <View style={styles.overlay}>
                   <Text style={styles.tourPlace}>{data.name}</Text>

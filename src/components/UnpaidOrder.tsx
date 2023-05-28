@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useRef, useState} from 'react';
 import {
   StyleSheet,
   View,
@@ -8,6 +8,8 @@ import {
   TouchableOpacity,
   Modal,
   TouchableWithoutFeedback,
+  Clipboard,
+  ToastAndroid,
 } from 'react-native';
 import {IconCall, IconLocation} from '../assets/_IndexAssets';
 import changeFormatDate from '../functions/changeFormatDate';
@@ -25,11 +27,21 @@ const UnpaidOrderDesc = ({item}: any) => {
     setShowTiket(false);
   };
 
+  const textRef = useRef(null);
+
+  const handleCopy = () => {
+    Clipboard.setString(item.va_number);
+    ToastAndroid.show(
+      `VA Number ${item.va_number} berhasil disalin`,
+      ToastAndroid.SHORT,
+    );
+  };
+
   return (
     <View style={styles.upComingOdrBox}>
       <Image
         source={{
-          uri: `${API_URL}/destination/image/${item.destination.id}/1`,
+          uri: `${API_URL}/destination/image/${item.destination.id}`,
         }}
         style={styles.upComingImg}
       />
@@ -78,7 +90,23 @@ const UnpaidOrderDesc = ({item}: any) => {
         <View style={styles.modalContainer}>
           <Text>Bayar dan nikmati liburan mu</Text>
           <Text>Bank: {item.payment} </Text>
-          <Text>VA Number: {item.va_number}</Text>
+          <TouchableOpacity onPress={handleCopy} style={styles.vaNumber}>
+            <Icon
+              name="copy"
+              size={20}
+              color="black"
+              style={{marginRight: 7}}
+            />
+            <Text
+              style={{
+                fontWeight: 'bold',
+                color: 'black',
+                fontSize: 20,
+              }}
+              ref={textRef}>
+              {item.va_number}
+            </Text>
+          </TouchableOpacity>
         </View>
       </Modal>
     </View>
@@ -191,5 +219,14 @@ const styles = StyleSheet.create({
   },
   qrCodeContainer: {
     marginTop: 20,
+  },
+  vaNumber: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    backgroundColor: 'white',
+    margin: 10,
+    padding: 5,
+    borderRadius: 10,
+    marginBottom: 30,
   },
 });

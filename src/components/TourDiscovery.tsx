@@ -98,9 +98,9 @@ const TourDiscovery = ({navigation, listDestinations}: any) => {
             isActive={activeCategory === 'Semua'}
           />
           <TourCategory
-            category={'Hutan'}
-            onPress={() => handleCategoryPress('Hutan')}
-            isActive={activeCategory === 'Hutan'}
+            category={'Kolam Renang'}
+            onPress={() => handleCategoryPress('Kolam Renang')}
+            isActive={activeCategory === 'Kolam Renang'}
           />
           <TourCategory
             category={'Gunung'}
@@ -113,14 +113,14 @@ const TourDiscovery = ({navigation, listDestinations}: any) => {
             isActive={activeCategory === 'Pantai'}
           />
           <TourCategory
-            category={'Museum'}
-            onPress={() => handleCategoryPress('Museum')}
-            isActive={activeCategory === 'Museum'}
+            category={'Sejarah'}
+            onPress={() => handleCategoryPress('Sejarah')}
+            isActive={activeCategory === 'Sejarah'}
           />
           <TourCategory
-            category={'Binatang'}
-            onPress={() => handleCategoryPress('Binatang')}
-            isActive={activeCategory === 'Binatang'}
+            category={'Safari'}
+            onPress={() => handleCategoryPress('Safari')}
+            isActive={activeCategory === 'Safari'}
           />
         </View>
       </ScrollView>
@@ -130,7 +130,7 @@ const TourDiscovery = ({navigation, listDestinations}: any) => {
             tourImg={Tour4}
             tourProvince={'Bogor'}
             tourPlace={'Taman Safari'}
-            tourEnv={['Binatang', '']}
+            tourEnv={['Safari', '']}
             tourRating={4.6}
             tourLength={[20, 1]}
             tourPrice={150000}
@@ -142,7 +142,7 @@ const TourDiscovery = ({navigation, listDestinations}: any) => {
                   key={index}
                   onPress={() => toDetailDestination(data)}>
                   <TourList
-                    tourImg={`${API_URL}/destination/image/${data.id}/1`}
+                    tourImg={`${API_URL}/destination/image/${data.id}`}
                     tourProvince={data.city}
                     tourPlace={data.name}
                     tourEnv={data.category}

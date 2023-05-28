@@ -1,13 +1,13 @@
 import React from 'react';
 import {
-  StyleSheet, 
-  Text, 
-  View, 
-  ImageBackground, 
-  SafeAreaView, 
-  Dimensions, 
+  StyleSheet,
+  Text,
+  View,
+  ImageBackground,
+  SafeAreaView,
+  Dimensions,
   Image,
-  TouchableOpacity
+  TouchableOpacity,
 } from 'react-native';
 import { HeaderBanner_2, ImageProfile, IconRewrite, IconProfileSetting, IconNotificationSetting, IconAnonymous } from '../assets/_IndexAssets';
 
@@ -22,17 +22,17 @@ const HeadInfo = () => {
               <Text style={{color: 'white', fontFamily: 'Gilroy-Regular', fontSize: 12}}>Nazwatazkia@gmail.com</Text>
             </View>
           </View>
-          <TouchableOpacity>
-            <Image source={IconRewrite} style={styles.iconRewrite} />
-          </TouchableOpacity>
         </View>
-      </ImageBackground>
-  )
-}
+        <TouchableOpacity>
+          <Image source={IconRewrite} style={styles.iconRewrite} />
+        </TouchableOpacity>
+    </ImageBackground>
+  );
+};
 
 const SettingScreen = () => {
   return (
-    <SafeAreaView style={{flex : 1}}>
+    <SafeAreaView style={{flex: 1}}>
       <HeadInfo />
       <View style={{margin: 20}}>
         <View style={{
@@ -72,13 +72,13 @@ const windowWidth = Dimensions.get('window').width;
 const windowHeight = Dimensions.get('window').height;
 
 const styles = StyleSheet.create({
-  banner : {
+  banner: {
     height: windowHeight / 4.9,
-    flexDirection : 'row'
+    flexDirection: 'row',
   },
-  iconRewrite : {
-    width : 45,
-    height : 45
+  iconRewrite: {
+    width: 45,
+    height: 45,
   },
   container : {
     alignItems : 'center',

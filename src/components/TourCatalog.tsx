@@ -21,12 +21,12 @@ const TourPicture = ({data, navigation}: any) => {
   return (
     <TouchableOpacity onPress={() => toDetailDestination()}>
       <ImageBackground
-        source={{uri: `${API_URL}/destination/image/${data.id}/1`}}
+        source={{uri: `${API_URL}/destination/image/${data.id}`}}
         style={styles.containerImg}
         borderRadius={20}>
         <View style={styles.rating}>
           <IconStar style={{marginRight: 5}} />
-          <Text style={styles.subFont}>ss</Text>
+          <Text style={styles.subFont}>4.5</Text>
         </View>
         <View style={styles.destination}>
           <Text style={[styles.province, styles.mainFont]}>{data.city}</Text>
@@ -81,7 +81,7 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
     borderRadius: 5,
-    marginHorizontal: windowWidth / 4.2,
+    marginHorizontal: windowWidth / 4.5,
     top: windowHeight / 50,
     left: windowWidth / 5,
     height: 25,

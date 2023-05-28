@@ -7,7 +7,7 @@ import {
   Image,
   TouchableOpacity,
   Modal,
-  Dimensions
+  Dimensions,
 } from 'react-native';
 import {API_URL} from '../../env';
 import {toTitleCase} from '../../functions/ToTitleCase';
@@ -15,33 +15,39 @@ import {RadioButton} from 'react-native-paper';
 import DatePicker from 'react-native-modern-datepicker';
 import axios from 'axios';
 import AsyncStorage from '@react-native-async-storage/async-storage';
-import { 
-  IconBackArrow_2, 
-  IconCalendar, 
+import {
+  IconBackArrow_2,
+  IconCalendar,
   ImagePermataLogo,
   ImageBRILogo,
-  ImageBCALogo
+  ImageBCALogo,
 } from '../../assets/_IndexAssets';
+import LoadingScreen from '../../components/LoadingScreen';
 
-const ChooseDate = ({showDatePicker, setShowDatePicker, selectedDate, setSelectedDate, currentDate} : any) => {
-  return(
+const ChooseDate = ({
+  showDatePicker,
+  setShowDatePicker,
+  selectedDate,
+  setSelectedDate,
+  currentDate,
+}: any) => {
+  return (
     <View style={{marginVertical: 16}}>
-      <View style={{flexDirection : 'row', justifyContent: 'space-between'}}>
-        <Text style={styles.labelHeader}>Tanggal Keberangkatan</Text> 
-        <TouchableOpacity
-          onPress={() => setShowDatePicker(true)}>
-          <View style={{
-            alignItems: 'center', 
-            flexDirection: 'row',
-          }}>
-            <Text style={[styles.subLabelHeader, {marginRight: 5}]}>Pilih Tanggal</Text>
+      <View style={{flexDirection: 'row', justifyContent: 'space-between'}}>
+        <Text style={styles.labelHeader}>Tanggal Keberangkatan</Text>
+        <TouchableOpacity onPress={() => setShowDatePicker(true)}>
+          <View
+            style={{
+              alignItems: 'center',
+              flexDirection: 'row',
+            }}>
+            <Text style={[styles.subLabelHeader, {marginRight: 5}]}>
+              Pilih Tanggal
+            </Text>
             <Image source={IconCalendar} style={styles.calendarStyle} />
           </View>
         </TouchableOpacity>
-        <Modal
-          transparent={true}
-          visible={showDatePicker}
-          animationType="fade">
+        <Modal transparent={true} visible={showDatePicker} animationType="fade">
           <View style={styles.modalContainer}>
             <TouchableOpacity
               style={styles.closeButton}
@@ -72,14 +78,16 @@ const ChooseDate = ({showDatePicker, setShowDatePicker, selectedDate, setSelecte
       </View>
       <View style={styles.dateContainer}>
         <Text style={styles.dateStyle}>
-          {selectedDate.slice(8, 10)}{selectedDate.slice(4, 8)}{selectedDate.slice(0, 4)}
-          </Text>
+          {selectedDate.slice(8, 10)}
+          {selectedDate.slice(4, 8)}
+          {selectedDate.slice(0, 4)}
+        </Text>
       </View>
     </View>
-  )
-}
+  );
+};
 
-const TicketAmount = ({handleIncrement,handleDecrement, count} : any) => {
+const TicketAmount = ({handleIncrement, handleDecrement, count}: any) => {
   return (
     <View>
       <Text style={styles.labelHeader}>Banyak Tiket</Text>
@@ -96,70 +104,75 @@ const TicketAmount = ({handleIncrement,handleDecrement, count} : any) => {
         </TouchableOpacity>
       </View>
     </View>
-  )
-}
+  );
+};
 
-const PurchaseMethod = ({selectedMethod, handleMetodePembayaranPress} : any) => {
+const PurchaseMethod = ({selectedMethod, handleMetodePembayaranPress}: any) => {
   return (
     <View style={styles.purchaseContainer}>
-        <Text style={styles.labelHeader}>Metode Pembayaran</Text>
-        <View style={styles.hrLine} />
+      <Text style={styles.labelHeader}>Metode Pembayaran</Text>
+      <View style={styles.hrLine} />
+      <View style={{flexDirection: 'row', alignItems: 'center'}}>
+        <RadioButton.Android
+          value="Permata"
+          status={selectedMethod === 'Permata' ? 'checked' : 'unchecked'}
+          onPress={() => handleMetodePembayaranPress('Permata')}
+        />
         <View style={{flexDirection: 'row', alignItems: 'center'}}>
-          <RadioButton.Android
-            value="Permata"
-            status={selectedMethod === 'Permata' ? 'checked' : 'unchecked'}
-            onPress={() => handleMetodePembayaranPress('Permata')}
-          />
-          <View style={{flexDirection: 'row', alignItems: 'center'}}>
-            <View style={styles.bankLogoContainer}>
-              <Image source={ImagePermataLogo} style={styles.bankImageContainer}/>
-            </View>
-            <Text style={styles.bankText}>Permata</Text>
+          <View style={styles.bankLogoContainer}>
+            <Image
+              source={ImagePermataLogo}
+              style={styles.bankImageContainer}
+            />
           </View>
-        </View>
-        <View style={{flexDirection: 'row', alignItems: 'center'}}>
-          <RadioButton.Android
-            value="BRI"
-            status={selectedMethod === 'BRI' ? 'checked' : 'unchecked'}
-            onPress={() => handleMetodePembayaranPress('BRI')}
-          />
-          <View style={{flexDirection: 'row', alignItems: 'center'}}>
-            <View style={styles.bankLogoContainer}>
-              <Image source={ImageBRILogo} style={styles.bankImageContainer}/>
-            </View>
-            <Text style={styles.bankText}>BRI</Text>
-          </View>
-        </View>
-        <View style={{flexDirection: 'row', alignItems: 'center'}}>
-          <RadioButton.Android
-            value="BCA"
-            status={selectedMethod === 'BCA' ? 'checked' : 'unchecked'}
-            onPress={() => handleMetodePembayaranPress('BCA')}
-          />
-          <View style={{flexDirection: 'row', alignItems: 'center'}}>
-            <View style={styles.bankLogoContainer}>
-              <Image source={ImageBCALogo} style={styles.bankImageContainer}/>
-            </View>
-            <Text style={styles.bankText}>BCA</Text>
-          </View>
+          <Text style={styles.bankText}>Permata</Text>
         </View>
       </View>
-  )
-}
+      <View style={{flexDirection: 'row', alignItems: 'center'}}>
+        <RadioButton.Android
+          value="BRI"
+          status={selectedMethod === 'BRI' ? 'checked' : 'unchecked'}
+          onPress={() => handleMetodePembayaranPress('BRI')}
+        />
+        <View style={{flexDirection: 'row', alignItems: 'center'}}>
+          <View style={styles.bankLogoContainer}>
+            <Image source={ImageBRILogo} style={styles.bankImageContainer} />
+          </View>
+          <Text style={styles.bankText}>BRI</Text>
+        </View>
+      </View>
+      <View style={{flexDirection: 'row', alignItems: 'center'}}>
+        <RadioButton.Android
+          value="BCA"
+          status={selectedMethod === 'BCA' ? 'checked' : 'unchecked'}
+          onPress={() => handleMetodePembayaranPress('BCA')}
+        />
+        <View style={{flexDirection: 'row', alignItems: 'center'}}>
+          <View style={styles.bankLogoContainer}>
+            <Image source={ImageBCALogo} style={styles.bankImageContainer} />
+          </View>
+          <Text style={styles.bankText}>BCA</Text>
+        </View>
+      </View>
+    </View>
+  );
+};
 
-const BuyButton = () => {
+const BuyButton = ({handlePurchase}: any) => {
   return (
     <View style={styles.buySection}>
       <View style={styles.labelPrice}>
         <Text style={styles.labelSecond}>Harga Tiket</Text>
         <Text style={styles.buyPrice}>Rp 20.000</Text>
       </View>
-      <TouchableOpacity style={styles.buyButtonStyle}>
+      <TouchableOpacity
+        onPress={() => handlePurchase()}
+        style={styles.buyButtonStyle}>
         <Text style={styles.buyButtonText}>Bayar Sekarang</Text>
       </TouchableOpacity>
     </View>
-  )
-}
+  );
+};
 
 const Purchase = ({route, navigation}: {route: any; navigation: any}) => {
   const data = route.params.data;
@@ -168,8 +181,9 @@ const Purchase = ({route, navigation}: {route: any; navigation: any}) => {
   const [selectedDate, setSelectedDate] = useState(currentDate);
   const [showDatePicker, setShowDatePicker] = useState(false);
   const [selectedMethod, setSelectedMethod] = useState('');
-  const [count, setCount] = useState(0);
-  const [totalPrice, setTotalPrice] = useState(data.price);
+  const [count, setCount] = useState(1);
+  const [loading, setLoading] = useState(false);
+  // const [totalPrice, setTotalPrice] = useState(data.price);
 
   const handleMetodePembayaranPress = (method: string) => {
     setSelectedMethod(method);
@@ -195,64 +209,69 @@ const Purchase = ({route, navigation}: {route: any; navigation: any}) => {
       payment: selectedMethod,
     };
 
-    axios
-      .post(`${API_URL}/order`, createOrder, {
-        headers: {
-          Authorization: `Bearer ${token}`,
-        },
-      })
-      .then(res => {
-        navigation.navigate('OrderSuccess', {
-          data: res.data,
+    if (createOrder.payment !== '') {
+      setLoading(true);
+      axios
+        .post(`${API_URL}/order`, createOrder, {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        })
+        .then(res => {
+          navigation.navigate('OrderSuccess', {
+            data: res.data,
+          });
         });
-      });
+    }
   };
 
-  return (
+  return loading ? (
+    <LoadingScreen />
+  ) : (
     <View>
       <View style={styles.container}>
         <View style={styles.beliTiketHeader}>
-          <TouchableOpacity 
-            style={styles.backButtonContainer}
-          >
+          <TouchableOpacity style={styles.backButtonContainer}>
             <Image source={IconBackArrow_2} style={styles.backButton} />
           </TouchableOpacity>
           <Text style={styles.beli_tiket}>Beli Tiket</Text>
         </View>
         <View style={styles.destination}>
-        <Image
-          source={{
-            uri: `${API_URL}/destination/image/${data.id}/1`,
-          }}
-          style={styles.tinyLogo}
-        />
-        <View>
-          <Text style={styles.labelHeader}>{toTitleCase(data.name)}</Text>
-          <Text style={styles.subLabelHeader}>{data.city}</Text>
+          <Image
+            source={{
+              uri: `${API_URL}/destination/image/${data.id}`,
+            }}
+            style={styles.tinyLogo}
+          />
+          <View>
+            <Text style={styles.labelHeader}>{toTitleCase(data.name)}</Text>
+            <Text style={styles.subLabelHeader}>{data.city}</Text>
+          </View>
         </View>
-      </View>
         <View style={styles.detail}>
           <Text style={styles.labelHeader}>Detail Tiket</Text>
           <View style={styles.hrLine} />
           <ChooseDate
             showDatePicker={showDatePicker}
-            setShowDatePicker={setShowDatePicker} 
+            setShowDatePicker={setShowDatePicker}
             selectedDate={selectedDate}
-            setSelectedDate={setSelectedDate} 
+            setSelectedDate={setSelectedDate}
             currentDate={currentDate}
           />
           <View style={styles.hrLine} />
-          <TicketAmount 
+          <TicketAmount
             handleIncrement={handleIncrement}
-            handleDecrement={handleDecrement} 
+            handleDecrement={handleDecrement}
             count={count}
           />
         </View>
-        <PurchaseMethod selectedMethod={selectedMethod} handleMetodePembayaranPress={handleMetodePembayaranPress}/>
+        <PurchaseMethod
+          selectedMethod={selectedMethod}
+          handleMetodePembayaranPress={handleMetodePembayaranPress}
+        />
       </View>
-      <BuyButton />
+      <BuyButton handlePurchase={() => handlePurchase()} />
     </View>
-
   );
 };
 
@@ -270,24 +289,24 @@ const styles = StyleSheet.create({
     fontSize: 20,
   },
   destination: {
-    alignItems : 'center',
+    alignItems: 'center',
     marginBottom: 20,
     marginTop: 35,
     padding: 20,
     backgroundColor: 'white',
     flexDirection: 'row',
-    borderRadius: 12
+    borderRadius: 12,
   },
   labelHeader: {
     color: 'black',
     fontFamily: 'Gilroy-Bold',
     fontSize: 16,
-    marginBottom: 5
+    marginBottom: 5,
   },
   subLabelHeader: {
     color: '#90A8BF',
     fontFamily: 'Gilroy-Regular',
-    fontSize: 16
+    fontSize: 16,
   },
   tinyLogo: {
     marginHorizontal: 10,
@@ -298,7 +317,7 @@ const styles = StyleSheet.create({
   detail: {
     padding: 20,
     backgroundColor: 'white',
-    borderRadius: 12
+    borderRadius: 12,
   },
   modalContainer: {
     flex: 1,
@@ -338,8 +357,8 @@ const styles = StyleSheet.create({
   },
   counterTextContainer: {
     marginHorizontal: 10,
-    flexDirection: 'row', 
-    alignItems : 'center'
+    flexDirection: 'row',
+    alignItems: 'center',
   },
   counterText: {
     color: 'black',
@@ -355,15 +374,15 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
   },
   beliTiketHeader: {
-    alignItems: 'center', 
-    flexDirection: 'row', 
-    justifyContent : 'space-between',
-    width : '62%'
+    alignItems: 'center',
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    width: '62%',
   },
   backButtonContainer: {
-    padding: 13, 
-    backgroundColor: 'white', 
-    borderRadius: 12
+    padding: 13,
+    backgroundColor: 'white',
+    borderRadius: 12,
   },
   backButton: {
     width: 20,
@@ -372,23 +391,23 @@ const styles = StyleSheet.create({
   hrLine: {
     backgroundColor: '#C3D9E9',
     height: 2,
-    marginVertical : 10
+    marginVertical: 10,
   },
   calendarStyle: {
     width: 21,
-    height: 21
+    height: 21,
   },
   dateContainer: {
     alignItems: 'center',
     backgroundColor: '#00C0CA',
     marginTop: 12,
     marginHorizontal: windowWidth / 4,
-    padding: 0
+    padding: 0,
   },
   dateStyle: {
     color: 'white',
     fontFamily: 'Poppins-Regular',
-    fontSize: 16
+    fontSize: 16,
   },
   purchaseContainer: {
     backgroundColor: 'white',
@@ -404,12 +423,12 @@ const styles = StyleSheet.create({
   bankLogoContainer: {
     width: 25,
     height: 25,
-    marginRight: 10
+    marginRight: 10,
   },
   bankText: {
     color: '#464646',
     fontFamily: 'Gilroy-SemiBold',
-    fontSize: 16
+    fontSize: 16,
   },
   buySection: {
     backgroundColor: 'white',
@@ -422,7 +441,7 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'space-between',
     marginBottom: 15,
-    marginTop: 10
+    marginTop: 10,
   },
   labelSecond: {
     color: '#90A8BF',
@@ -432,7 +451,7 @@ const styles = StyleSheet.create({
   buyPrice: {
     color: '#00C0CA',
     fontFamily: 'Gilroy-Bold',
-    fontSize: 20
+    fontSize: 20,
   },
   buyButtonStyle: {
     alignItems: 'center',
@@ -440,13 +459,13 @@ const styles = StyleSheet.create({
     borderRadius: 10,
     height: 50,
     width: '100%',
-    justifyContent : 'center',
+    justifyContent: 'center',
   },
   buyButtonText: {
     color: 'white',
     fontFamily: 'Gilroy-Bold',
-    fontSize: 16
-  }
+    fontSize: 16,
+  },
 });
 
 export default Purchase;

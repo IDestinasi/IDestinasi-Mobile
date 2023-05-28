@@ -149,7 +149,7 @@ const SettledOrderDesc = ({item}: any) => {
     <View style={styles.container}>
       <Image
         source={{
-          uri: `${API_URL}/destination/image/${item.destination.id}/1`,
+          uri: `${API_URL}/destination/image/${item.destination.id}`,
         }}
         style={styles.imageStyle}
       />
@@ -195,7 +195,7 @@ const SettledOrderDesc = ({item}: any) => {
 const SettledOrder = ({data}: any) => {
   return (
     <View style={styles.settled}>
-      <Text style={styles.settledHeader}>Sudah Selesai {data.length}</Text>
+      <Text style={styles.settledHeader}>{`Sudah Selesai (${data.length})`}</Text>
       {data.map((item: any) => {
         return (
           <View style={{margin: 10}}>

@@ -16,6 +16,7 @@ import axios from 'axios';
 import LoadingScreen from '../../components/LoadingScreen';
 import TourCategory from '../../components/atoms/TourCategory';
 import requestCategory from '../../functions/requestCategory';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 // import env
 
 const categoryList = [
@@ -50,20 +51,34 @@ const ListDestination = ({navigation}: any) => {
 
   const onRefresh = React.useCallback(() => {
     setLoading(true);
-    axios.get(`${API_URL}/destination`).then(res => {
-      console.log(res.data);
-      setListDestination(res.data);
-      setLoading(false);
-      setRefreshing(false);
-    });
   }, []);
 
   useEffect(() => {
-    axios.get(`${API_URL}/destination`).then(res => {
-      console.log(res.data);
-      setListDestination(res.data);
-      setLoading(false);
-    });
+    const getToken = async () => {
+      return await AsyncStorage.getItem('token');
+    };
+
+    getToken()
+      .then(token => {
+        console.log(token);
+        axios
+          .get(
+            `${API_URL}/destination`,
+            // WITH HEADER JWT
+            {
+              headers: {
+                Authorization: `Bearer ${token}`,
+              },
+            },
+          )
+          .then(res => {
+            console.log(res.data);
+            setListDestination(res.data);
+            setLoading(false);
+            setRefreshing(false);
+          });
+      })
+      .catch(() => {});
   }, []);
 
   const changeDetailDestination = (item: any) => {
@@ -94,9 +109,9 @@ const ListDestination = ({navigation}: any) => {
                     isActive={activeCategory === 'Semua'}
                   />
                   <TourCategory
-                    category={'Hutan'}
-                    onPress={() => handleCategoryPress('Hutan')}
-                    isActive={activeCategory === 'Hutan'}
+                    category={'Kolam Renang'}
+                    onPress={() => handleCategoryPress('Kolam Renang')}
+                    isActive={activeCategory === 'Kolam Renang'}
                   />
                   <TourCategory
                     category={'Gunung'}
@@ -109,14 +124,14 @@ const ListDestination = ({navigation}: any) => {
                     isActive={activeCategory === 'Pantai'}
                   />
                   <TourCategory
-                    category={'Museum'}
-                    onPress={() => handleCategoryPress('Museum')}
-                    isActive={activeCategory === 'Museum'}
+                    category={'Sejarah'}
+                    onPress={() => handleCategoryPress('Sejarah')}
+                    isActive={activeCategory === 'Sejarah'}
                   />
                   <TourCategory
-                    category={'Binatang'}
-                    onPress={() => handleCategoryPress('Binatang')}
-                    isActive={activeCategory === 'Binatang'}
+                    category={'Safari'}
+                    onPress={() => handleCategoryPress('Safari')}
+                    isActive={activeCategory === 'Safari'}
                   />
                 </View>
               </ScrollView>
@@ -130,7 +145,7 @@ const ListDestination = ({navigation}: any) => {
                       <View style={styles.destination}>
                         <Image
                           source={{
-                            uri: `${API_URL}/destination/image/${item.id}/1`,
+                            uri: `${API_URL}/destination/image/${item.id}`,
                           }}
                           style={styles.tinyLogo}
                         />
