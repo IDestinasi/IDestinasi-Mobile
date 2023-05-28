@@ -141,7 +141,7 @@ const TourDiscovery = ({navigation, listDestinations}: any) => {
                 <TouchableOpacity onPress={() => toDetailDestination(data)}>
                   <TourList
                     key={index}
-                    tourImg={`${API_URL}/destination/image/${data.id}/1`}
+                    tourImg={`${API_URL}/destination/image/${data.id}`}
                     tourProvince={data.city}
                     tourPlace={data.name}
                     tourEnv={data.category}

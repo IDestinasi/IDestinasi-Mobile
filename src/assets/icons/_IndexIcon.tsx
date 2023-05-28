@@ -25,6 +25,10 @@ import IconRating from './Rating.svg';
 import IconSuggest from './Suggest.svg';
 import IconAgenLogo from './AgenLogo.svg';
 import IconCall_2 from './Call_2.svg';
+import IconAnonymous from './Anonymous.svg';
+import IconLogout from './logout.svg';
+import IconProfileSetting from './ProfileSetting.svg';
+import IconNotificationSetting from './NotificationSetting.svg';
 
 const IconRewrite = require('./Rewrite.png');
 const IconBackArrow_2 = require('./BackArrow_2.png');
@@ -60,5 +64,9 @@ export {
     IconAgenLogo,
     IconCall_2,
     IconBackArrow_2,
-    IconCalendar
+    IconCalendar,
+    IconAnonymous,
+    IconLogout,
+    IconNotificationSetting,
+    IconProfileSetting
 }

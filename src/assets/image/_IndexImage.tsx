@@ -17,6 +17,8 @@ const ImageRegistSuccess = require('./RegistSuccess.png');
 const ImagePermataLogo = require('./PermataLogo.png');
 const ImageBRILogo = require('./BRILogo.png');
 const ImageBCALogo = require('./BCALogo.png');
+const ImagePerahu = require('./Perahu.png');
+const ImageReviewer = require('./Reviewer.png');
 
 export {
   ImageIDestinasi,
@@ -36,5 +38,7 @@ export {
   ImageRegistSuccess,
   ImagePermataLogo,
   ImageBRILogo,
-  ImageBCALogo
+  ImageBCALogo,
+  ImagePerahu,
+  ImageReviewer
 };
