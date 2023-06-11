@@ -26,7 +26,7 @@ import IconSuggest from './Suggest.svg';
 import IconAgenLogo from './AgenLogo.svg';
 import IconCall_2 from './Call_2.svg';
 import IconAnonymous from './Anonymous.svg';
-import IconLogout from './logout.svg';
+import IconLogout from './Logout.svg';
 import IconProfileSetting from './ProfileSetting.svg';
 import IconNotificationSetting from './NotificationSetting.svg';
 
